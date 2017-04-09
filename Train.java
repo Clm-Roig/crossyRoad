@@ -16,8 +16,8 @@ public class Train extends Vehicle
     private int originY;
     
     
-    public Train() {
-        super();
+    public Train(int rawNb) {
+        super(rawNb);
         this.speed = 200;
         this.size = 100;        
     }

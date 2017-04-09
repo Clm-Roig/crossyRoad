@@ -7,19 +7,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (1,0)
  */
 public class Car extends Vehicle
-{
-    private String name;
-    private int speed;
-    private int size;
-    // private Image picture;
-    private int originX;
-    private int originY;
-    
-    
-    public Car() {
-        super();
-        this.speed = 50;
-        this.size = 20;        
+{  
+    public Car(int rawNb) {
+        super(rawNb);
+        this.setSpeed(50);
+        this.setSize(20);
     }
     
     /**
@@ -28,6 +20,6 @@ public class Car extends Vehicle
      */
     public void act() 
     {
-        // Add your action code here.
+        moveLeft();
     }    
 }

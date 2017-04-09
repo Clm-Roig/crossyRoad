@@ -6,25 +6,36 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (Jade HENNEBERT & Clément ROIG) 
  * @version (1,0)
  */
-public abstract class Vehicle extends Actor
+public abstract class Vehicle extends Mover
 {
-    private String name;
     private int speed;
     private int size;
-    // private Image picture;
-    private int originX;
-    private int originY;
+    private boolean direction; // true = left to right, false = right to left
     
-    public Vehicle() {
+    public Vehicle(int rawNb) {        
+        if(Greenfoot.getRandomNumber(2)==0) {
+            this.direction = false;
+        }
+        else {
+            this.direction = true;
+        }       
         
     }
     
+    /* Getters / setters */
+    public int getSpeed() {return this.speed;}
+    public int getSize() {return this.size;}
+    
+    public void setSpeed(int s) {this.speed = s;}
+    public void setSize(int s) {this.size = s;}
+ 
+ 
     /**
      * Act - do whatever the Vehicle wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
-        // Add your action code here.
+        move(this.getSpeed());
     }    
 }

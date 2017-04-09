@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Road
+comment0.text=\n\ Write\ a\ description\ of\ class\ Road\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=cell_size
+comment1.target=Road(int)
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Road.\n\ \n
+numComments=2

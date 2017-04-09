@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (Jade HENNEBERT & Clément ROIG) 
  * @version (1,0)
  */
-public class Obstacle extends Actor
+public class Obstacle extends Mover
 {
     /**
      * Act - do whatever the Obstacle wants to do. This method is called whenever
