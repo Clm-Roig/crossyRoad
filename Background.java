@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Background extends Actor
+public abstract class Background extends Actor
 {
 
     /**
@@ -16,4 +16,9 @@ public class Background extends Actor
     public Background(int cell_size){
         this.getImage().scale(cell_size,cell_size);
     }
+    
+    /**
+     * Les BG ont une chance de faire apparaitre un véhicule lors de leur création. 
+     */
+    public abstract void loadVehicle();
 }

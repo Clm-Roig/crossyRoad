@@ -16,4 +16,6 @@ public class Water extends Background
     public Water(int cell_size){
         super(cell_size);
     }
+    
+    public void loadVehicle(){}
 }

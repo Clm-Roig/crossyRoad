@@ -13,8 +13,9 @@ public class Plain extends Background
      * Constructor for objects of class Plain.
      * 
      */
-    public Plain(int cell_size)
-    {
+    public Plain(int cell_size) {
         super(cell_size);
     }
+    
+    public void loadVehicle(){}
 }

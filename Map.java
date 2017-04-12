@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Map extends World
 {
     
-    public static final int NB_ROW = 10;
+    public static final int NB_ROW = 12;
     public static final int CELL_SIZE = 50;
 
     /**
@@ -17,7 +17,7 @@ public class Map extends World
      */
 
     public Map() {    
-        // Create a new world with 600*600 cells with a cell size of 60*60 pixels.
+        // Create a new world
         super(NB_ROW, NB_ROW, CELL_SIZE); 
         
         int nb = Greenfoot.getRandomNumber(3);
@@ -27,7 +27,7 @@ public class Map extends World
         
         // On remplit aléatoirement le reste
         for(int i=NB_ROW-2; i >= 0 ; i--) {
-            nb = Greenfoot.getRandomNumber(3);
+            nb = Greenfoot.getRandomNumber(4);
             this.loadGround(nb,i);
         }        
         
@@ -42,6 +42,7 @@ public class Map extends World
     * 0 => water
     * 1 => plain
     * 2 => road
+    * 3 => rail
     */
    public void loadGround(int nb, int y) {
        for(int i=0; i<NB_ROW ; i++) {
@@ -56,6 +57,10 @@ public class Map extends World
            
            if(nb == 2) {
                addObject(new Road(CELL_SIZE),i,y);
+           }
+           
+           if(nb == 3) {
+               addObject(new Rail(CELL_SIZE),i,y);
            }
            
         }

@@ -1,22 +1,21 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Road here.
+ * Write a description of class Rail here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Road extends Background
+public class Rail extends Background
 {
 
     /**
-     * Constructor for objects of class Road.
+     * Constructor for objects of class Rail.
      * 
      */
-    public Road(int cell_size) {
-          super(cell_size);
+    public Rail(int cell_size) {
+        super(cell_size);
     }
     
     public void loadVehicle(){}
-   
 }

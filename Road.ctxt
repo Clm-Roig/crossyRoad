@@ -4,4 +4,6 @@ comment0.text=\n\ Write\ a\ description\ of\ class\ Road\ here.\n\ \n\ @author\ 
 comment1.params=cell_size
 comment1.target=Road(int)
 comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Road.\n\ \n
-numComments=2
+comment2.params=
+comment2.target=void\ loadVehicle()
+numComments=3
