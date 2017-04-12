@@ -49,12 +49,20 @@ Les Backgrounds pour l'instant ne font que charger une image que l'on scale() à
 -----------------
 A FAIRE
 -----------------
-- Réfléchir comment on tue le joueur. Est-ce que c'est le joueur qui vérifie s'il est tombé sur un obstacle ? Est-ce que c'est
-l'inverse ? etc.
+- Réfléchir comment on tue le joueur. PISTE (dans la classe Player) :
+   // On tue si on rencontrer un mover (voiture ou train) ou de l'eau.
+   Actor movers = getOneIntersectingObject(Mover.class);
+   Actor water = getOneIntersectingObject(Water.class);
+   if (a != null) {
+      // Suppression du joueur et Game Over
+   }
+   
 - Implémenter la classe Obstacle 
 - Générer aléatoirement des movers et des obstacles sur les backgrounds (voiture sur route, train sur rail etc.) 
 - Gérer le score du joueur dans Map et Joueur (l'afficher, l'incrémenter de 1 dès qu'on avance d'une case)
-- Gérer la mort du joueur pour recharger la partie. 
+   => classe ScoreBoard ? 
+   
+- Gérer la mort du joueur et recharger la partie
 - Compléter les classes Movers pour que les voitures / trains se déplacent
 
 
