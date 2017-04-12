@@ -22,8 +22,10 @@ public class Map extends World
         
         int nb = Greenfoot.getRandomNumber(3);
         
-        // On commence par une plaine en bas
-        loadGround(1,NB_ROW-1);
+        // On commence par une plaine sans arbre en bas
+        for(int i=0; i<NB_ROW ; i++) {
+            addObject(new Plain(CELL_SIZE),i,NB_ROW-1);            
+        }
         
         // On remplit aléatoirement le reste
         for(int i=NB_ROW-2; i >= 0 ; i--) {
@@ -52,7 +54,11 @@ public class Map extends World
            }
            
            if(nb == 1) {
-               addObject(new Plain(CELL_SIZE),i,y);
+               Plain pl = new Plain(CELL_SIZE);
+               addObject(pl,i,y);       
+               
+               // Arbre sur la plaine ?
+               pl.addTree(CELL_SIZE);
            }
            
            if(nb == 2) {
