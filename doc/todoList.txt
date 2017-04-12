@@ -1,0 +1,61 @@
+LIEN vers les consignes du projet => https://ent.umontpellier.fr/uPortal/f/u69l1s50/p/CUM2Moodle.u69l1n53/max/render.uP?pCp
+
+PRINCIPE GENERAL 
+-----------------
+
+I) Génération de la map 
+
+Le jeu est lancé par la classe "Map", qui génère ... une map ! Cela se fait grâce au constructeur de la classe parente "World"
+qu'on appelle ainsi => super(nbCases en longuer, nbCases en largeur, résolution des cases).
+
+Après, Map appelle une de ses méthodes, loadGround(numLigne,typeSol), pour générer le sol de la map. Cette méthode utilise
+la méthode "addObject(Objet, coordX, coordY)" qui permet d'ajouter un objet sur la map aux coordonnées indiquées. 
+________________________________________________________________________
+REMARQUE : les axes x et y du jeu commencent en HAUT à GAUCHE. 
+------------------> x
+|
+|       JEU  JEU
+|       JEU  JEU
+|       JEU  JEU
+________________________________________________________________________
+En sachant ça, on génère d'abord une plaine sur la dernière ligne (y max) parce que c'est là que le joueur va aterrir. 
+Puis on génère aléatoirement soit des routes, des rails, de l'eau ou de la plaine en faisant attention
+aux bornes des boucles "for()" pour bien générer sur toute la map. 
+
+Enfin, on ajoute un Player en bas de la map, au milieu. 
+
+II) Les Movers
+
+La classe Mover regroupe tous les acteurs qui peuvent bouger. J'y ai déjà codé les fonctions de déplacement qui 
+n'étaient pas si triviales que ça au final : quand on veut tourner à droite, il faut savoir dans quelle position 
+on est actuellement pour tourner de X° pour se mettre dans le bon sens.
+Par défaut, les éléments sont tournés vers la DROITE par exemple. Donc pour déplacement un élément vers le haut : 
+    * il faut lui soustraire sa "rotation actuelle" (que l'on obtient avec getRotation()) pour qu'il se retrouve à 0° 
+    * à 0° il est donc tourné vers la droite
+    * donc on le fait tourner (avec turn()) de 270° pour qu'il soit orienter vers le haut
+    * enfin, on fait move(1) pour déplacer d'une case dans la direction vers laquelle il est tournée
+
+LE CODE =>  // 270° pour aller vers le haut
+            public void moveUp() {
+                turn(270-getRotation());
+                move(1);
+            }
+
+III) Les Backgrounds
+
+Les Backgrounds pour l'instant ne font que charger une image que l'on scale() à la taille d'une cellule. 
+
+
+-----------------
+A FAIRE
+-----------------
+- Réfléchir comment on tue le joueur. Est-ce que c'est le joueur qui vérifie s'il est tombé sur un obstacle ? Est-ce que c'est
+l'inverse ? etc.
+- Implémenter la classe Obstacle 
+- Générer aléatoirement des movers et des obstacles sur les backgrounds (voiture sur route, train sur rail etc.) 
+- Gérer le score du joueur dans Map et Joueur (l'afficher, l'incrémenter de 1 dès qu'on avance d'une case)
+- Gérer la mort du joueur pour recharger la partie. 
+- Compléter les classes Movers pour que les voitures / trains se déplacent
+
+
+
