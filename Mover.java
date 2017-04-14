@@ -7,6 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class Mover extends Actor {
+    public final int DISTANCE_OBST = 10;
     /**
      * Act - do whatever the Mover wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -18,18 +19,36 @@ public class Mover extends Actor {
     // 180° pour aller vers la gauche
     public void moveLeft(int speed) {
         setRotation(180);
-        move(speed);
+        Actor obst = getOneObjectAtOffset(-DISTANCE_OBST,0,Obstacle.class);
+        if(obst == null) {
+            move(speed);
+        }
     }
     
     // 0° pour aller vers la droite
     public void moveRight(int speed) {
         setRotation(0);
-        move(speed);     
+        Actor obst = getOneObjectAtOffset(DISTANCE_OBST,0,Obstacle.class);
+        if(obst == null) {
+            move(speed);   
+        }        
     }
     
     // 270° pour aller vers le haut
     public void moveUp(int speed) {
         setRotation(270);
-        move(speed);
+        Actor obst = getOneObjectAtOffset(0,-DISTANCE_OBST,Obstacle.class);
+        if(obst == null) {
+            move(speed);
+        }
     }
+    
+    // 90° pour aller vers le haut
+    public void moveDown(int speed) {
+        setRotation(90);
+        Actor obst = getOneObjectAtOffset(0,DISTANCE_OBST,Obstacle.class);
+        if(obst == null) {
+            move(speed);
+        }
+   }
 }

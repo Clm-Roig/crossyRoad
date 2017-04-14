@@ -23,24 +23,27 @@ public class Player extends Mover
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() {     
-       if(Greenfoot.isKeyDown("up")) moveUp(this.speed);
-       if(Greenfoot.isKeyDown("right")) moveRight(this.speed);
-       if(Greenfoot.isKeyDown("left")) moveLeft(this.speed);  
+        if(Greenfoot.isKeyDown("up")) moveUp(this.speed);
+        if(Greenfoot.isKeyDown("right")) moveRight(this.speed);
+        if(Greenfoot.isKeyDown("left")) moveLeft(this.speed);  
        
-       // Si on est sur un objet en mouvement, gameOver
-       Actor intersectMov = getOneIntersectingObject(Mover.class);
-       if(intersectMov != null) {
-           this.killPlayer();
-       } 
+        // Juste pour les tests, on autorise le déplacement vers le bas
+        if(Greenfoot.isKeyDown("down")) moveDown(this.speed);  
        
-       // Si on est sur de l'eau et qu'il n'y a pas de Rock, gameOver
-       Actor intersectWat = getOneIntersectingObject(Water.class);
-       if(intersectWat != null) {
+        // Si on est sur un objet en mouvement, gameOver
+        Actor intersectMov = getOneIntersectingObject(Mover.class);
+        if(intersectMov != null) {
+            this.killPlayer();
+        } 
+       
+        // Si on est sur de l'eau et qu'il n'y a pas de Rock, gameOver
+        Actor intersectWat = getOneIntersectingObject(Water.class);
+        if(intersectWat != null) {
            Actor intersectRoc = getOneIntersectingObject(Rock.class);
            if(intersectRoc == null) {
                this.killPlayer();
            }
-      }          
+        }          
     }  
     
     public void killPlayer() {
