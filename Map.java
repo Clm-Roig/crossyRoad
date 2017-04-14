@@ -23,6 +23,8 @@ public class Map extends World {
         // Create a new world
         super(NB_ROW, NB_ROW, CELL_SIZE); 
         
+        setPaintOrder(Mover.class,Background.class);
+        
         int nb = Greenfoot.getRandomNumber(3);
         
         // On commence par une plaine sans arbre en bas
