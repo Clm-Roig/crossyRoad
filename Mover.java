@@ -6,8 +6,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Mover extends Actor {
+public abstract class Mover extends Actor {
     public final int DISTANCE_ADJ = 3;
+    public int speed;
+    
+    public Mover() {}
+    
+    public void setSpeed(int s) {this.speed = s;}
+    public int getSpeed() {return this.speed;}
     
     /**
      * Act - do whatever the Mover wants to do. This method is called whenever

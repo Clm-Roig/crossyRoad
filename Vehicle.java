@@ -11,8 +11,10 @@ public abstract class Vehicle extends Mover
     private final int IMAGE_SIZE = 45;
     private String direction;    
     
-    public Vehicle(String direction) { 
+    public Vehicle(String direction, int s) { 
         super();
+        super.setSpeed(s);
+        
         float ratioHW = (float) getImage().getHeight()/getImage().getWidth();
         float newHeight = IMAGE_SIZE * ratioHW;
         this.getImage().scale(IMAGE_SIZE,(int)newHeight);    
