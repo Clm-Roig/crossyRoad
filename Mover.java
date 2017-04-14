@@ -7,7 +7,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public abstract class Mover extends Actor {
-    public final int DISTANCE_ADJ = 3;
     public int speed;
     
     public Mover() {}
@@ -24,38 +23,38 @@ public abstract class Mover extends Actor {
     }    
     
     // 180° pour aller vers la gauche
-    public void moveLeft(int speed) {
+    public void moveLeft() {
         setRotation(180);
-        Obstacle obst = (Obstacle) getOneObjectAtOffset(-DISTANCE_ADJ,0,Obstacle.class);
+        Obstacle obst = (Obstacle) getOneObjectAtOffset(-this.speed,0,Obstacle.class);
         if(obst == null) {
-            move(speed);
+            move(this.speed);
         }
     }
     
     // 0° pour aller vers la droite
-    public void moveRight(int speed) {
+    public void moveRight() {
         setRotation(0);
-        Obstacle obst = (Obstacle) getOneObjectAtOffset(DISTANCE_ADJ,0,Obstacle.class);
+        Obstacle obst = (Obstacle) getOneObjectAtOffset(this.speed,0,Obstacle.class);
         if(obst == null) {
-            move(speed);   
+            move(this.speed);   
         }        
     }
     
     // 270° pour aller vers le haut
-    public void moveUp(int speed) {
+    public void moveUp() {
         setRotation(270);
-        Obstacle obst = (Obstacle) getOneObjectAtOffset(0,-DISTANCE_ADJ,Obstacle.class);
+        Obstacle obst = (Obstacle) getOneObjectAtOffset(0,-this.speed,Obstacle.class);
         if(obst == null) {
-            move(speed);
+            move(this.speed);
         }
     }
     
     // 90° pour aller vers le haut
-    public void moveDown(int speed) {
+    public void moveDown() {
         setRotation(90);
-        Obstacle obst = (Obstacle) getOneObjectAtOffset(0,DISTANCE_ADJ,Obstacle.class);
+        Obstacle obst = (Obstacle) getOneObjectAtOffset(0,this.speed,Obstacle.class);
         if(obst == null) {
-            move(speed);
+            move(this.speed);
         }
    }
 }

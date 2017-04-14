@@ -20,7 +20,7 @@ public class Car extends Vehicle {
      */
     public void act() {
         if(getDirection() == "toLeft") {
-            moveLeft(this.speed);
+            moveLeft();
             
             if(isAtEdge()) {
                 setLocation(this.getWorld().getWidth()+1,getY());
@@ -28,7 +28,7 @@ public class Car extends Vehicle {
         }
         
         if(getDirection() == "toRight") {
-            moveRight(this.speed);
+            moveRight();
             
             if(isAtEdge()) {
                 setLocation(-1,getY());
