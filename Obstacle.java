@@ -7,9 +7,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (1,0)
  */
 public class Obstacle extends Actor {
-    
-    public Obstacle(int cell_size){
-        this.getImage().scale(cell_size,cell_size);
+    private final int IMAGE_SIZE = 40;
+    public Obstacle(){
+        this.getImage().scale(IMAGE_SIZE,IMAGE_SIZE);
     }
     
     /**

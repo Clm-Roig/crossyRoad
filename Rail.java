@@ -13,8 +13,8 @@ public class Rail extends Background
      * Constructor for objects of class Rail.
      * 
      */
-    public Rail(int cell_size) {
-        super(cell_size);
+    public Rail() {
+        super();
     }
     
     public void loadVehicle(){}

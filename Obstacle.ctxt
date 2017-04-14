@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Obstacle
 comment0.text=\n\ Write\ a\ description\ of\ class\ Obstacle\ here.\n\ \n\ @author\ (Jade\ HENNEBERT\ &\ Cl\u00E9ment\ ROIG)\ \n\ @version\ (1,0)\n
-comment1.params=cell_size
-comment1.target=Obstacle(int)
+comment1.params=
+comment1.target=Obstacle()
 comment2.params=
 comment2.target=void\ act()
 comment2.text=\n\ Act\ -\ do\ whatever\ the\ Obstacle\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n

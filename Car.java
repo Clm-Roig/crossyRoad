@@ -6,10 +6,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (Jade HENNEBERT & Clément ROIG) 
  * @version (1,0)
  */
-public class Car extends Vehicle
-{  
-    public Car(int cell_size, String direction) {
-        super(cell_size, direction);
+public class Car extends Vehicle {  
+    private int speed = 10;
+    
+    public Car(String direction) {
+        super(direction);
     }
     
     /**
@@ -18,7 +19,7 @@ public class Car extends Vehicle
      */
     public void act() {
         if(getDirection() == "toLeft") {
-            moveLeft();
+            moveLeft(this.speed);
             
             if(isAtEdge()) {
                 setLocation(this.getWorld().getWidth()+1,getY());
@@ -26,7 +27,7 @@ public class Car extends Vehicle
         }
         
         if(getDirection() == "toRight") {
-            moveRight();
+            moveRight(this.speed);
             
             if(isAtEdge()) {
                 setLocation(-1,getY());

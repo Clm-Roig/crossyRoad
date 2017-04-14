@@ -13,12 +13,12 @@ public class Plain extends Background
      * Constructor for objects of class Plain.
      * 
      */
-    public Plain(int cell_size) {
-        super(cell_size);
+    public Plain() {
+        super();
     }
     
-    public void addTree(int cell_size) {
-        getWorld().addObject(new Tree(cell_size),getX(),getY());        
+    public void addTree() {
+        getWorld().addObject(new Tree(),getX(),getY());        
     }
     
     public void loadVehicle(){}

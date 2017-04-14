@@ -8,8 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Train extends Vehicle
 {    
-    public Train(int cell_size, String direction) {
-        super(cell_size, direction);      
+    public Train(String direction) {
+        super(direction);      
     }
     
     /**

@@ -13,12 +13,12 @@ public class Water extends Background
      * Constructor for objects of class Water.
      * 
      */
-    public Water(int cell_size){
-        super(cell_size);
+    public Water(){
+        super();
     }
     
     public void addRock(int cell_size) {
-        getWorld().addObject(new Rock(cell_size),getX(),getY());
+        getWorld().addObject(new Rock(),getX(),getY());
     }     
     
 }

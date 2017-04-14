@@ -9,10 +9,12 @@ import java.util.List;
  */
 public class Player extends Mover
 {
+    private final int IMAGE_SIZE = 40;
     private int score = 0;
+    private int speed = 10;
     
-    public Player(int cell_size) {
-        this.getImage().scale(cell_size,cell_size);
+    public Player() {
+        this.getImage().scale(IMAGE_SIZE,IMAGE_SIZE);
         setRotation(270);
     }
     
@@ -21,9 +23,9 @@ public class Player extends Mover
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() {     
-       if(Greenfoot.isKeyDown("up")) moveUp();
-       if(Greenfoot.isKeyDown("right")) moveRight();
-       if(Greenfoot.isKeyDown("left")) moveLeft();  
+       if(Greenfoot.isKeyDown("up")) moveUp(this.speed);
+       if(Greenfoot.isKeyDown("right")) moveRight(this.speed);
+       if(Greenfoot.isKeyDown("left")) moveLeft(this.speed);  
        
        // Si on est sur un objet en mouvement, gameOver
        Actor intersectMov = getOneIntersectingObject(Mover.class);

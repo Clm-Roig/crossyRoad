@@ -7,9 +7,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (1,0)
  */    
 public class Map extends World {
-    
-    public static final int NB_ROW = 13;
-    public static final int CELL_SIZE = 45;
+    public static final int SIZE_MAP = 500;
+    public static final int NB_ROW = 5;
+    public static final int CELL_SIZE = 50;
     
     // Apparition proba (/100)
     public static final int PROBA_CAR = 10;
@@ -22,23 +22,23 @@ public class Map extends World {
 
     public Map() {    
         // Create a new world and setPaintOrder
-        super(NB_ROW, NB_ROW, CELL_SIZE);
+        super(SIZE_MAP, SIZE_MAP, 1);
         setPaintOrder(Mover.class,Rock.class,Obstacle.class,Background.class);
         
         // On commence par une plaine sans arbre en bas
-        for(int i=0; i<NB_ROW ; i++) {
-            addObject(new Plain(CELL_SIZE),i,NB_ROW-1);            
+        for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
+            addObject(new Plain(),i,SIZE_MAP - (CELL_SIZE/2));            
         }
         
         int typeGround;
         // On remplit aléatoirement le reste
-        for(int i=NB_ROW-2; i >= 0 ; i--) {
+        for(int i=SIZE_MAP - (CELL_SIZE*3)/2 ; i > 0 ; i = i-CELL_SIZE) {
             typeGround= Greenfoot.getRandomNumber(4);
             this.loadGround(typeGround,i);
         }        
         
         // Ajout Player 
-        addObject(new Player(CELL_SIZE),NB_ROW/2,NB_ROW - 1);
+        addObject(new Player(),SIZE_MAP/2,SIZE_MAP - CELL_SIZE/2);
     }
     
    /* Cette fonction place un objet Ground sur la carte 
@@ -53,8 +53,8 @@ public class Map extends World {
    public void loadGround(int typeGround, int y) {  
        // Water
        if(typeGround == 0) {
-           for(int i=0; i<NB_ROW ; i++) {
-               Water wat = new Water(CELL_SIZE);
+           for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
+               Water wat = new Water();
                addObject(wat,i,y);           
             
                // Rock ?
@@ -67,14 +67,14 @@ public class Map extends World {
        
        // Plain
        if(typeGround == 1) {
-           for(int i=0; i<NB_ROW ; i++) {
-               Plain pl = new Plain(CELL_SIZE);
+           for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
+               Plain pl = new Plain();
                addObject(pl,i,y);       
                
                // Tree ?
                int isTree = Greenfoot.getRandomNumber(100);
                if(isTree < PROBA_TREE) {
-                   pl.addTree(CELL_SIZE);
+                   pl.addTree();
                }               
            }
        }
@@ -89,22 +89,22 @@ public class Map extends World {
                 direction = "toRight";
            }  
            
-           for(int i=0; i<NB_ROW ; i++) {
-               Road road = new Road(CELL_SIZE,direction);
+           for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
+               Road road = new Road(direction);
                addObject(road,i,y);               
                
                // Car ?
                int isCar = Greenfoot.getRandomNumber(100);
                if(isCar < PROBA_CAR) {
-                   road.addCar(CELL_SIZE);
+                   road.addCar();
                 }
             }
        }
        
        // Rail
        if(typeGround == 3) {
-           for(int i=0; i<NB_ROW ; i++) {
-               addObject(new Rail(CELL_SIZE),i,y);
+           for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
+               addObject(new Rail(),i,y);
             }
        }         
      

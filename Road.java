@@ -14,12 +14,12 @@ public class Road extends Background
      * Constructor for objects of class Road.
      * 
      */
-    public Road(int cell_size, String direction) {
-        super(cell_size);
+    public Road(String direction) {
+        super();
         this.direction = direction;
     }
     
-    public void addCar(int cell_size) {
-        getWorld().addObject(new Car(cell_size,this.direction),getX(),getY());
+    public void addCar() {
+        getWorld().addObject(new Car(this.direction),getX(),getY());
     }   
 }

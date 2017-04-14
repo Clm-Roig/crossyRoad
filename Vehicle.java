@@ -8,11 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public abstract class Vehicle extends Mover
 {
+    private final int IMAGE_SIZE = 40;
     private String direction;
     
-    public Vehicle(int cell_size, String direction) { 
+    
+    public Vehicle(String direction) { 
         super();
-        this.getImage().scale(cell_size,cell_size);    
+        this.getImage().scale(60,IMAGE_SIZE);    
         this.direction = direction;
         if(direction == "toRight") {
             setRotation(0);

@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Vehicle
 comment0.text=\n\ Write\ a\ description\ of\ class\ Vehicle\ here.\n\ \n\ @author\ (Jade\ HENNEBERT\ &\ Cl\u00E9ment\ ROIG)\ \n\ @version\ (1,0)\n
-comment1.params=cell_size\ direction
-comment1.target=Vehicle(int,\ java.lang.String)
+comment1.params=direction
+comment1.target=Vehicle(java.lang.String)
 comment2.params=
 comment2.target=java.lang.String\ getDirection()
 comment3.params=

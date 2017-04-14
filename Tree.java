@@ -8,8 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Tree extends Obstacle {
     
-    public Tree (int cellSize) {
-        super(cellSize);
+    public Tree () {
+        super();
     }
     
     /**
