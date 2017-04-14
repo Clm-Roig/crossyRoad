@@ -17,5 +17,8 @@ public class Water extends Background
         super(cell_size);
     }
     
-    public void loadVehicle(){}
+    public void addRock(int cell_size) {
+        getWorld().addObject(new Rock(cell_size),getX(),getY());
+    }     
+    
 }

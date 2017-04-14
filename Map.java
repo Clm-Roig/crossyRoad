@@ -14,6 +14,7 @@ public class Map extends World {
     // Apparition proba (/100)
     public static final int PROBA_CAR = 10;
     public static final int PROBA_TREE = 10;   
+    public static final int PROBA_ROCK = 50; 
 
     /**
      * Constructor for objects of class Map.
@@ -22,7 +23,7 @@ public class Map extends World {
     public Map() {    
         // Create a new world and setPaintOrder
         super(NB_ROW, NB_ROW, CELL_SIZE);
-        setPaintOrder(Mover.class,Obstacle.class,Background.class);
+        setPaintOrder(Mover.class,Rock.class,Obstacle.class,Background.class);
         
         // On commence par une plaine sans arbre en bas
         for(int i=0; i<NB_ROW ; i++) {
@@ -53,8 +54,15 @@ public class Map extends World {
        // Water
        if(typeGround == 0) {
            for(int i=0; i<NB_ROW ; i++) {
-               addObject(new Water(CELL_SIZE),i,y);
-            }
+               Water wat = new Water(CELL_SIZE);
+               addObject(wat,i,y);           
+            
+               // Rock ?
+               int isRock = Greenfoot.getRandomNumber(100);
+               if(isRock < PROBA_ROCK) {
+                   wat.addRock(CELL_SIZE);
+               } 
+           }
        }
        
        // Plain
@@ -100,5 +108,9 @@ public class Map extends World {
             }
        }         
      
+   }
+   
+   public void gameOver() {
+       Greenfoot.stop();
    }
 }

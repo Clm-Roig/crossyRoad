@@ -18,13 +18,13 @@ public class Mover extends Actor {
     // 180° pour aller vers la gauche
     public void moveLeft() {
         setRotation(180);
-        move(1);  
+        move(1);
     }
     
     // 0° pour aller vers la droite
     public void moveRight() {
         setRotation(0);
-        move(1);        
+        move(1);     
     }
     
     // 270° pour aller vers le haut
