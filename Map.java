@@ -20,22 +20,20 @@ public class Map extends World {
      */
 
     public Map() {    
-        // Create a new world
-        super(NB_ROW, NB_ROW, CELL_SIZE); 
-        
-        setPaintOrder(Mover.class,Background.class);
-        
-        int nb = Greenfoot.getRandomNumber(3);
+        // Create a new world and setPaintOrder
+        super(NB_ROW, NB_ROW, CELL_SIZE);
+        setPaintOrder(Mover.class,Obstacle.class,Background.class);
         
         // On commence par une plaine sans arbre en bas
         for(int i=0; i<NB_ROW ; i++) {
             addObject(new Plain(CELL_SIZE),i,NB_ROW-1);            
         }
         
+        int typeGround;
         // On remplit aléatoirement le reste
         for(int i=NB_ROW-2; i >= 0 ; i--) {
-            nb = Greenfoot.getRandomNumber(4);
-            this.loadGround(nb,i);
+            typeGround= Greenfoot.getRandomNumber(4);
+            this.loadGround(typeGround,i);
         }        
         
         // Ajout Player 
@@ -51,16 +49,16 @@ public class Map extends World {
     * 2 => road
     * 3 => rail
     */
-   public void loadGround(int nb, int y) {  
+   public void loadGround(int typeGround, int y) {  
        // Water
-       if(nb == 0) {
+       if(typeGround == 0) {
            for(int i=0; i<NB_ROW ; i++) {
                addObject(new Water(CELL_SIZE),i,y);
             }
        }
        
        // Plain
-       if(nb == 1) {
+       if(typeGround == 1) {
            for(int i=0; i<NB_ROW ; i++) {
                Plain pl = new Plain(CELL_SIZE);
                addObject(pl,i,y);       
@@ -74,7 +72,7 @@ public class Map extends World {
        }
        
        // Road
-       if(nb == 2) {
+       if(typeGround == 2) {
            String direction;
            if(Greenfoot.getRandomNumber(2)==0) {
                 direction = "toLeft";
@@ -96,7 +94,7 @@ public class Map extends World {
        }
        
        // Rail
-       if(nb == 3) {
+       if(typeGround == 3) {
            for(int i=0; i<NB_ROW ; i++) {
                addObject(new Rail(CELL_SIZE),i,y);
             }

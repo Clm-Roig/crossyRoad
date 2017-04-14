@@ -14,6 +14,12 @@ public abstract class Vehicle extends Mover
         super();
         this.getImage().scale(cell_size,cell_size);    
         this.direction = direction;
+        if(direction == "toRight") {
+            setRotation(0);
+        }
+        else {
+            setRotation(180);
+        }
     } 
     
     // GET / SET
