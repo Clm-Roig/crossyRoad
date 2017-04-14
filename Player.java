@@ -10,9 +10,8 @@ import java.util.List;
 public class Player extends Mover
 {
     private final int IMAGE_SIZE = 40;
-    private final int DISTANCE_WATER = 5;
     private int score = 0;
-    private int speed = 4;
+    private int speed = 3;
     
     public Player() {
         this.getImage().scale(IMAGE_SIZE,IMAGE_SIZE);
@@ -38,13 +37,13 @@ public class Player extends Mover
         } 
        
         // Si on est sur de l'eau et qu'il n'y a pas de Rock, gameOver
-        Actor intersectWat = getOneObjectAtOffset(DISTANCE_WATER,DISTANCE_WATER,Water.class);
-        if(intersectWat != null) {
-           Actor intersectRoc = getOneIntersectingObject(Rock.class);
-           if(intersectRoc == null) {
-               this.killPlayer();
-           }
-        }          
+        List<Water> listWat = getObjectsAtOffset(0,0,Water.class);
+        if(!listWat.isEmpty()){
+            List<Rock> listRock = getObjectsAtOffset(0,0,Rock.class);
+            if(listRock.isEmpty()) {
+                killPlayer();
+            }
+        }
     }  
     
     public void killPlayer() {
