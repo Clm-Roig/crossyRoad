@@ -7,11 +7,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (1,0)
  */
 public class Car extends Vehicle {  
-    private int speed = 4;
+    private int speed;
     
-    public Car(String direction) {
+    public Car(String direction, int s) {
         super(direction);
+        this.speed = s;
     }
+    
+    public int getSpeed() {return this.speed;}
+    public void setSpeed(int s) {this.speed = s;}
     
     /**
      * Act - do whatever the Car wants to do. This method is called whenever

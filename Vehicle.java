@@ -9,14 +9,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public abstract class Vehicle extends Mover
 {
     private final int IMAGE_SIZE = 45;
-    private String direction;
-    
+    private String direction;    
     
     public Vehicle(String direction) { 
         super();
         float ratioHW = (float) getImage().getHeight()/getImage().getWidth();
         float newHeight = IMAGE_SIZE * ratioHW;
         this.getImage().scale(IMAGE_SIZE,(int)newHeight);    
+        
         this.direction = direction;
         if(direction == "toRight") {
             setRotation(0);

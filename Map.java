@@ -89,6 +89,9 @@ public class Map extends World {
                 direction = "toRight";
            }  
            
+           // Which color of Car for this road ?
+           int colorCar = Greenfoot.getRandomNumber(3);
+           
            for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
                Road road = new Road(direction);
                addObject(road,i,y);               
@@ -96,7 +99,9 @@ public class Map extends World {
                // Car ?
                int isCar = Greenfoot.getRandomNumber(100);
                if(isCar < PROBA_CAR) {
-                   road.addCar();
+                   if(colorCar == 0) road.addRedCar();
+                   if(colorCar == 1) road.addGreenCar();
+                   if(colorCar == 2) road.addBlueCar();
                 }
             }
        }

@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Mover extends Actor {
     public final int DISTANCE_ADJ = 3;
+    
     /**
      * Act - do whatever the Mover wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

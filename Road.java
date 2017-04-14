@@ -19,7 +19,15 @@ public class Road extends Background
         this.direction = direction;
     }
     
-    public void addCar() {
-        getWorld().addObject(new Car(this.direction),getX(),getY());
-    }   
+    public void addRedCar() {
+        getWorld().addObject(new RedCar(this.direction),getX(),getY());
+    }  
+    
+    public void addGreenCar() {
+        getWorld().addObject(new GreenCar(this.direction),getX(),getY());
+    } 
+    
+    public void addBlueCar() {
+        getWorld().addObject(new BlueCar(this.direction),getX(),getY());
+    }
 }
