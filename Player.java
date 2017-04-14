@@ -81,11 +81,11 @@ public class Player extends Mover
         }
     }
     
-    public void killPlayer() {
-        GreenfootImage img = getImage();
-        img.setColor(greenfoot.Color.RED);
-        img.drawLine(0, 0, img.getWidth(), img.getHeight());
-        img.drawLine(0, img.getHeight(), img.getWidth(), 0);
+    public void killPlayer() {        
+        // Apparition d'un crane
+        this.setRotation(0);
+        this.setImage("skull.png");
+        this.getImage().scale(IMAGE_SIZE,IMAGE_SIZE);
 
         ((Map)getWorld()).gameOver();
     }
