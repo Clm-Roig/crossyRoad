@@ -46,20 +46,28 @@ Les Backgrounds pour l'instant ne font que charger une image que l'on scale() à
 -----------------
 A FAIRE
 -----------------
-- Réfléchir comment on tue le joueur. PISTE (dans la classe Player) :
-   // On tue si on rencontrer un mover (voiture ou train) ou de l'eau.
-   Actor movers = getOneIntersectingObject(Mover.class);
-   Actor water = getOneIntersectingObject(Water.class);
-   if (a != null) {
-      // Suppression du joueur et Game Over
-   }
-   
-- Implémenter la classe Obstacle 
-- Générer aléatoirement des movers et des obstacles sur les backgrounds (voiture sur route, train sur rail etc.) 
-   => j'ai fait Car déjà
+JADE
+- Factoriser code loadGround() en sous-fonctions
+- Défilement 
+	=> Ajouter nouvelle ligne hors du champ (en haut)
+	=> faire tout descendre régulièrement
+	=> supprimer ligne hors champ (checker tous les pixels) 		- getObjectsAt(x,y,class)
+		- removeObject(class)
+- Classe Item (pièce) 
+	=> removeTouching() pour le Player
+	=> gérer l'incrémentation du score
+
+- Gérer le GameOver (afficher score et recharger partie)
+________________________________________________________
+
+- Gestion du son
+
+- Classe Plateforme
+
+- Rajouter des voitures plus ou moins rapides
+
 - Gérer le score du joueur dans Map et Joueur (l'afficher, l'incrémenter de 1 dès qu'on avance d'une case)
    => classe ScoreBoard ? 
-   
-- Gérer la mort du joueur et recharger la partie
+
 - Compléter les classes Movers pour que les voitures / trains se déplacent
    => j'ai fait Car déjà
