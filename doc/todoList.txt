@@ -27,17 +27,14 @@ Enfin, on ajoute un Player en bas de la map, au milieu.
 II) Les Movers
 
 La classe Mover regroupe tous les acteurs qui peuvent bouger. J'y ai déjà codé les fonctions de déplacement qui 
-n'étaient pas si triviales que ça au final : quand on veut tourner à droite, il faut savoir dans quelle position 
-on est actuellement pour tourner de X° pour se mettre dans le bon sens.
+n'étaient pas si triviales que ça au final : quand on veut tourner dans une direction, il faut d'abord faire tourner l'objet dans la bonne direction. 
 Par défaut, les éléments sont tournés vers la DROITE par exemple. Donc pour déplacement un élément vers le haut : 
-    * il faut lui soustraire sa "rotation actuelle" (que l'on obtient avec getRotation()) pour qu'il se retrouve à 0° 
-    * à 0° il est donc tourné vers la droite
-    * donc on le fait tourner (avec turn()) de 270° pour qu'il soit orienter vers le haut
+    * il faut lui setRotation(270) car le haut est à 270° (par rapport à la droite qui est à 0°)
     * enfin, on fait move(1) pour déplacer d'une case dans la direction vers laquelle il est tournée
 
 LE CODE =>  // 270° pour aller vers le haut
             public void moveUp() {
-                turn(270-getRotation());
+                setRotation(270);
                 move(1);
             }
 
@@ -59,11 +56,10 @@ A FAIRE
    
 - Implémenter la classe Obstacle 
 - Générer aléatoirement des movers et des obstacles sur les backgrounds (voiture sur route, train sur rail etc.) 
+   => j'ai fait Car déjà
 - Gérer le score du joueur dans Map et Joueur (l'afficher, l'incrémenter de 1 dès qu'on avance d'une case)
    => classe ScoreBoard ? 
    
 - Gérer la mort du joueur et recharger la partie
 - Compléter les classes Movers pour que les voitures / trains se déplacent
-
-
-
+   => j'ai fait Car déjà
