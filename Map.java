@@ -6,11 +6,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (Jade HENNEBERT & Clément ROIG) 
  * @version (1,0)
  */    
-public class Map extends World
-{
+public class Map extends World {
     
-    public static final int NB_ROW = 12;
-    public static final int CELL_SIZE = 50;
+    public static final int NB_ROW = 13;
+    public static final int CELL_SIZE = 45;
+    
+    // Apparition proba (/100)
+    public static final int PROBA_CAR = 10;
+    public static final int PROBA_TREE = 10;   
 
     /**
      * Constructor for objects of class Map.
@@ -34,7 +37,7 @@ public class Map extends World
         }        
         
         // Ajout Player 
-        addObject(new Player(),NB_ROW/2,NB_ROW - 1);
+        addObject(new Player(CELL_SIZE),NB_ROW/2,NB_ROW - 1);
     }
     
    /* Cette fonction place un objet Ground sur la carte 
@@ -46,29 +49,56 @@ public class Map extends World
     * 2 => road
     * 3 => rail
     */
-   public void loadGround(int nb, int y) {
-       for(int i=0; i<NB_ROW ; i++) {
-           
-           if(nb == 0) {
+   public void loadGround(int nb, int y) {  
+       // Water
+       if(nb == 0) {
+           for(int i=0; i<NB_ROW ; i++) {
                addObject(new Water(CELL_SIZE),i,y);
-           }
-           
-           if(nb == 1) {
+            }
+       }
+       
+       // Plain
+       if(nb == 1) {
+           for(int i=0; i<NB_ROW ; i++) {
                Plain pl = new Plain(CELL_SIZE);
                addObject(pl,i,y);       
                
-               // Arbre sur la plaine ?
-               pl.addTree(CELL_SIZE);
+               // Tree ?
+               int isTree = Greenfoot.getRandomNumber(100);
+               if(isTree < PROBA_TREE) {
+                   pl.addTree(CELL_SIZE);
+               }               
            }
-           
-           if(nb == 2) {
-               addObject(new Road(CELL_SIZE),i,y);
+       }
+       
+       // Road
+       if(nb == 2) {
+           String direction;
+           if(Greenfoot.getRandomNumber(2)==0) {
+                direction = "toLeft";
            }
+           else {
+                direction = "toRight";
+           }  
            
-           if(nb == 3) {
+           for(int i=0; i<NB_ROW ; i++) {
+               Road road = new Road(CELL_SIZE,direction);
+               addObject(road,i,y);               
+               
+               // Car ?
+               int isCar = Greenfoot.getRandomNumber(100);
+               if(isCar < PROBA_CAR) {
+                   road.addCar(CELL_SIZE);
+                }
+            }
+       }
+       
+       // Rail
+       if(nb == 3) {
+           for(int i=0; i<NB_ROW ; i++) {
                addObject(new Rail(CELL_SIZE),i,y);
-           }
-           
-        }
+            }
+       }         
+     
    }
 }

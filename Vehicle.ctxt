@@ -1,18 +1,11 @@
 #BlueJ class context
 comment0.target=Vehicle
 comment0.text=\n\ Write\ a\ description\ of\ class\ Vehicle\ here.\n\ \n\ @author\ (Jade\ HENNEBERT\ &\ Cl\u00E9ment\ ROIG)\ \n\ @version\ (1,0)\n
-comment1.params=rawNb
-comment1.target=Vehicle(int)
+comment1.params=cell_size\ direction
+comment1.target=Vehicle(int,\ java.lang.String)
 comment2.params=
-comment2.target=int\ getSpeed()
-comment2.text=Getters\ /\ setters
+comment2.target=java.lang.String\ getDirection()
 comment3.params=
-comment3.target=int\ getSize()
-comment4.params=s
-comment4.target=void\ setSpeed(int)
-comment5.params=s
-comment5.target=void\ setSize(int)
-comment6.params=
-comment6.target=void\ act()
-comment6.text=\n\ Act\ -\ do\ whatever\ the\ Vehicle\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
-numComments=7
+comment3.target=void\ act()
+comment3.text=\n\ Act\ -\ do\ whatever\ the\ Vehicle\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+numComments=4

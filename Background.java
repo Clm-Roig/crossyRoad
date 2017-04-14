@@ -16,9 +16,4 @@ public abstract class Background extends Actor
     public Background(int cell_size){
         this.getImage().scale(cell_size,cell_size);
     }
-    
-    /**
-     * Les BG ont une chance de faire apparaitre un véhicule lors de leur création. 
-     */
-    public abstract void loadVehicle();
 }

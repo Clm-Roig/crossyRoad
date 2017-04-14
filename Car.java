@@ -8,18 +8,20 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Car extends Vehicle
 {  
-    public Car(int rawNb) {
-        super(rawNb);
-        this.setSpeed(50);
-        this.setSize(20);
+    public Car(int cell_size, String direction) {
+        super(cell_size, direction);
     }
     
     /**
      * Act - do whatever the Car wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {
-        moveLeft();
-    }    
+    public void act() {
+        if(getDirection() == "toLeft") {
+            moveLeft();
+        }
+        else {
+            moveRight();
+        }
+    }
 }

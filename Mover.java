@@ -12,26 +12,25 @@ public class Mover extends Actor
      * Act - do whatever the Mover wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {
+    public void act() {
         // Add your action code here.
     }    
     
     // 180° pour aller vers la gauche
     public void moveLeft() {
-        turn(180-getRotation());
+        setRotation(180);
         move(1);  
     }
     
     // 0° pour aller vers la droite
     public void moveRight() {
-        turn(-getRotation());
+        setRotation(0);
         move(1);        
     }
     
     // 270° pour aller vers le haut
     public void moveUp() {
-        turn(270-getRotation());
+        setRotation(270);
         move(1);
     }
 }
