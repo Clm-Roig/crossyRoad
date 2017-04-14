@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=ScoreBoard
+comment0.text=\n\ ScoreBoard\ that\ displays\ some\ taxt\ and\ a\ number.\n\ \n\ @author\ Jade\ HENNEBERT\ &\ Cl\u00E9ment\ ROIG\n\ @version\ 1.0\n
+comment1.params=
+comment1.target=ScoreBoard()
+comment1.text=\n\ Create\ a\ ScoreBoard\ without\ a\ text\ prefix,\ initialized\ to\ zero.\n
+comment2.params=prefix
+comment2.target=ScoreBoard(java.lang.String)
+comment2.text=\n\ Create\ a\ ScoreBoard\ with\ a\ given\ text\ prefix,\ initialized\ to\ zero.\n
+comment3.params=inc
+comment3.target=void\ increment(int)
+comment3.text=\n\ Increment\ the\ counter\ value\ by\ the\ value\ given.\n
+comment4.params=
+comment4.target=void\ updateImage()
+comment4.text=\n\ Show\ the\ current\ text\ and\ count\ on\ this\ actor's\ image.\n
+numComments=5
