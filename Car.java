@@ -20,7 +20,7 @@ public class Car extends Vehicle
         if(getDirection() == "toLeft") {
             moveLeft();
         }
-        else {
+        if(getDirection() == "toRight") {
             moveRight();
         }
     }

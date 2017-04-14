@@ -8,11 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public abstract class Vehicle extends Mover
 {
-    private int speed;
-    private int size;
     private String direction;
     
     public Vehicle(int cell_size, String direction) { 
+        super();
         this.getImage().scale(cell_size,cell_size);    
         this.direction = direction;
     } 
