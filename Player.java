@@ -9,9 +9,11 @@ import java.util.List;
  */
 public class Player extends Mover
 {
+    
     private final int IMAGE_SIZE = 40;
-    private int score = 0;
-    private int speed = 3;
+    private final int WALKING_DELAY = 15;
+    private int walkingDelayCounter = 0;
+    private int speed = 50;
     
     public Player() {
         this.getImage().scale(IMAGE_SIZE,IMAGE_SIZE);
@@ -23,12 +25,7 @@ public class Player extends Mover
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() {     
-        if(Greenfoot.isKeyDown("up")) moveUp(this.speed);
-        if(Greenfoot.isKeyDown("right")) moveRight(this.speed);
-        if(Greenfoot.isKeyDown("left")) moveLeft(this.speed);  
-       
-        // Juste pour les tests, on autorise le déplacement vers le bas
-        if(Greenfoot.isKeyDown("down")) moveDown(this.speed);  
+        checkMove();
        
         // Si on est sur un objet en mouvement, gameOver
         Actor intersectMov = getOneIntersectingObject(Mover.class);
@@ -44,7 +41,44 @@ public class Player extends Mover
                 killPlayer();
             }
         }
+        
+        walkingDelayCounter++;
     }  
+    
+    public void checkMove() {
+        if(walkingDelayCounter >= WALKING_DELAY) {
+            
+            if(Greenfoot.isKeyDown("up")) {
+                if(getY() - this.speed > 0) {
+                    moveUp(this.speed);
+                    walkingDelayCounter = 0;
+                }
+            }
+            
+            if(Greenfoot.isKeyDown("right")) {
+                if(getX() + this.speed < ((Map)getWorld()).SIZE_MAP) {
+                    moveRight(this.speed);
+                    walkingDelayCounter = 0;
+                }
+            }
+            
+            if(Greenfoot.isKeyDown("left")){
+                if(getX() - this.speed > 0) {
+                    moveLeft(this.speed);  
+                    walkingDelayCounter = 0;
+                }
+            }
+           
+            // Juste pour les tests, on autorise le déplacement vers le bas
+            if(Greenfoot.isKeyDown("down")){
+                if(getY() + this.speed < ((Map)getWorld()).SIZE_MAP) {
+                    moveDown(this.speed);  
+                    walkingDelayCounter = 0;
+                }
+            }
+            
+        }
+    }
     
     public void killPlayer() {
         GreenfootImage img = getImage();

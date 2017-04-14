@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */    
 public class Map extends World {
     // SIZE_MAP doit etre un multiple de CELL_SIZE pour bien remplir tout l'écran
-    public static final int SIZE_MAP = 600;
+    public static final int SIZE_MAP = 550;
     public static final int CELL_SIZE = 50;
     
     // Apparition proba (/100)
