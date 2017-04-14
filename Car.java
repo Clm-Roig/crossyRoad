@@ -7,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (1,0)
  */
 public class Car extends Vehicle {  
-    private int speed = 10;
+    private int speed = 5;
     
     public Car(String direction) {
         super(direction);
