@@ -12,7 +12,7 @@ public class Map extends World {
     public static final int CELL_SIZE = 50;
     
     // Apparition proba (/100)
-    public static final int PROBA_CAR = 10;
+    public static final int PROBA_CAR = 20;
     public static final int PROBA_TREE = 10;   
     public static final int PROBA_ROCK = 50; 
 

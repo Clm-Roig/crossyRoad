@@ -28,17 +28,17 @@ public class Player extends Mover
     public void act() {     
         checkMove();
        
-        // Si on est sur un objet en mouvement, gameOver
-        Actor intersectMov = getOneIntersectingObject(Mover.class);
-        if(intersectMov != null) {
+        // Si on est sur un véhicule, gameOver
+        Actor intersectVehicle = getOneIntersectingObject(Vehicle.class);
+        if(intersectVehicle != null) {
             this.killPlayer();
         } 
        
-        // Si on est sur de l'eau et qu'il n'y a pas de Rock, gameOver
+        // Si on est sur de l'eau et qu'il n'y a pas de Platform, gameOver
         List<Water> listWat = getObjectsAtOffset(0,0,Water.class);
         if(!listWat.isEmpty()){
-            List<Rock> listRock = getObjectsAtOffset(0,0,Rock.class);
-            if(listRock.isEmpty()) {
+            List<Platform> listPlatform = getObjectsAtOffset(0,0,Platform.class);
+            if(listPlatform.isEmpty()) {
                 killPlayer();
             }
         }
