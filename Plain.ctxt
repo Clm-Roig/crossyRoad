@@ -1,11 +1,13 @@
 #BlueJ class context
 comment0.target=Plain
-comment0.text=\n\ Write\ a\ description\ of\ class\ Plain\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Plain\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=Plain()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Plain.\n\ \n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Plain.\r\n\ \r\n
 comment2.params=
 comment2.target=void\ addTree()
 comment3.params=
 comment3.target=void\ loadVehicle()
-numComments=4
+comment4.params=cell_size
+comment4.target=void\ addReward(int)
+numComments=5

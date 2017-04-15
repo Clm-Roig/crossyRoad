@@ -22,4 +22,8 @@ public class Plain extends Background
     }
     
     public void loadVehicle(){}
+    
+    public void addReward(int cell_size) {
+        getWorld().addObject(new Reward(),getX(),getY());
+    }
 }

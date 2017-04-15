@@ -21,4 +21,7 @@ public class Water extends Background
         getWorld().addObject(new Rock(),getX(),getY());
     }     
     
+    public void addReward(int cell_size) {
+        getWorld().addObject(new Reward(),getX(),getY());
+    }
 }

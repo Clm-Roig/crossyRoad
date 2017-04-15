@@ -1,22 +1,22 @@
 #BlueJ class context
 comment0.target=RailWithSignal
-comment0.text=\n\ \n\ @author\ Jade\ HENNEBERT\ &\ Cl\u00E9ment\ ROIG\n\ @version\ 1.0\n
+comment0.text=\r\n\ \r\n\ @author\ Jade\ HENNEBERT\ &\ Cl\u00E9ment\ ROIG\r\n\ @version\ 1.0\r\n
 comment1.params=direction
 comment1.target=RailWithSignal(java.lang.String)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=distance
 comment3.target=boolean\ checkForDistance(int)
-comment3.text=\n\ Teste\ si\ le\ train\ est\ plus\ proche\ de\ la\ map\ que\ la\ distance\ pass\u00E9e\ en\ param\u00E8tre\ (selon\ l'axe\ X)\n
+comment3.text=\r\n\ Teste\ si\ le\ train\ est\ plus\ proche\ de\ la\ map\ que\ la\ distance\ pass\u00E9e\ en\ param\u00E8tre\ (selon\ l'axe\ X)\r\n
 comment4.params=
 comment4.target=void\ checkForDeleteTrain()
-comment4.text=\n\ Supprime\ le\ r\u00E9f\u00E9rencement\ du\ train\ dans\ le\ rail\ si\ celui-ci\ est\ d\u00E9j\u00E0\ pass\u00E9\n
+comment4.text=\r\n\ Supprime\ le\ r\u00E9f\u00E9rencement\ du\ train\ dans\ le\ rail\ si\ celui-ci\ est\ d\u00E9j\u00E0\ pass\u00E9\r\n
 comment5.params=
 comment5.target=Train\ addTrain()
-comment5.text=\n\ Cr\u00E9\u00E9\ et\ renvoie\ un\ nouveau\ train\ \u00E0\ positionTrain\ pxl\ de\ la\ map.\ \n
+comment5.text=\r\n\ Cr\u00E9\u00E9\ et\ renvoie\ un\ nouveau\ train\ \u00E0\ positionTrain\ pxl\ de\ la\ map.\ \r\n
 comment6.params=
 comment6.target=void\ greenSignal()
-comment6.text=\n\ Change\ la\ couleur\ du\ signal\n
+comment6.text=\r\n\ Change\ la\ couleur\ du\ signal\r\n
 comment7.params=
 comment7.target=void\ orangeSignal()
 comment8.params=

@@ -9,6 +9,8 @@ import java.util.List;
  */
 public class Player extends Mover
 {
+    public static final int SIZE_MAP = 550;
+    public static final int CELL_SIZE = 50;
     
     private final int IMAGE_SIZE = 40;
     private final int WALKING_DELAY = 15;
@@ -41,6 +43,12 @@ public class Player extends Mover
             if(listPlatform.isEmpty()) {
                 killPlayer();
             }
+        }
+        
+        // Si on est hors du champs le joueur meurt
+        int y = this.getY();
+        if (y > (SIZE_MAP + CELL_SIZE/2)){
+            killPlayer();
         }
         
         walkingDelayCounter++;

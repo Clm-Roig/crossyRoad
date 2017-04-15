@@ -17,6 +17,7 @@ public class Map extends World {
     public int PROBA_TREE = 10;   
     public int PROBA_ROCK = 50; 
     public int PROBA_TRAIN = 100;
+    public int PROBA_REWARD = 20;
     
     /* Les probas de sol sont cumulatives et sont traités dans l'ordre suivant : 
      * water => plain => road => rail
@@ -58,14 +59,16 @@ public class Map extends World {
         }        
         
         // Ajout Player et score
-        addObject(new Player(),SIZE_MAP/2,SIZE_MAP - CELL_SIZE/2);
+        addObject(new Player(),SIZE_MAP/2,SIZE_MAP - CELL_SIZE/2) ;
         
         this.score = new ScoreBoard("Score : ");
-        addObject(this.score,150,CELL_SIZE/2);        
+        addObject(this.score,150,CELL_SIZE/2); 
+              
     }
     
     public void act() {
         cleanTrainsOut();
+        defile();
     }
     
     /**
@@ -80,50 +83,45 @@ public class Map extends World {
         }
     }
     
-    /** 
-     * Place un objet Background sur la carte selon l'entier passé en paramètre sur la ligne y.
-     *  
-     * 0 <= y < SIZE_MAP
-     * 
-     * 0 => water
-     * 1 => plain
-     * 2 => road
-     * 3 => rail
-     */
-    public void loadRandomGround(int y) {  
-       int randGround = Greenfoot.getRandomNumber(100);
-       
-       // Water
-       if(randGround < PROBA_WATER) {
-           for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
-               Water wat = new Water();
-               addObject(wat,i,y);           
+    // Les differéntes méthodes de chargement de background
+        
+    public void loadWater(int y){
+        for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
+        Water wat = new Water();
+        addObject(wat,i,y);           
             
-               // Rock ?
-               int isRock = Greenfoot.getRandomNumber(100);
-               if(isRock < PROBA_ROCK) {
-                   wat.addRock(CELL_SIZE);
-               } 
-           }
-       }
-       
-       // Plain
-       if(PROBA_WATER <= randGround && randGround < PROBA_PLAIN) {
-           for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
+        // Rock ?
+        int isRock = Greenfoot.getRandomNumber(100);
+            if(isRock < PROBA_ROCK) {
+               wat.addRock(CELL_SIZE);
+               int isReward = Greenfoot.getRandomNumber(100);
+               if(isReward < PROBA_REWARD){
+                   wat.addReward(CELL_SIZE);
+                }
+            }
+        }
+    }
+    
+    
+    public void loadPlain(int y){
+         for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
                Plain pl = new Plain();
                addObject(pl,i,y);       
                
                // Tree ?
                int isTree = Greenfoot.getRandomNumber(100);
+               int isReward = Greenfoot.getRandomNumber(100);
                if(isTree < PROBA_TREE) {
                    pl.addTree();
-               }               
-           }
-       }
-       
-       // Road
-       if(PROBA_PLAIN <= randGround && randGround < PROBA_ROAD) {
-           String direction;
+               }
+               else if(isReward < PROBA_REWARD){
+                   pl.addReward(CELL_SIZE);
+                }
+        }
+    }
+    
+    public void loadRoad(int y){
+        String direction;
            if(Greenfoot.getRandomNumber(2)==0) {
                 direction = "toLeft";
            }
@@ -146,10 +144,10 @@ public class Map extends World {
                    if(colorCar == 2) road.addBlueCar();
                }
             }
-       }
-       
-       // Rail
-       if(PROBA_ROAD <= randGround && randGround < PROBA_RAIL) {
+        
+    }
+    
+    public void loadRail(int y){
            // Direction
            String direction;
            if(Greenfoot.getRandomNumber(2)==0) {
@@ -178,11 +176,73 @@ public class Map extends World {
                     addObject(rail,i,y);              
                 } 
            }         
-       }         
-     
+       }
+    
+    /** 
+     * Place un objet Background sur la carte selon l'entier passé en paramètre sur la ligne y.
+     *  
+     * 0 <= y < SIZE_MAP
+     * 
+     * 0 => water
+     * 1 => plain
+     * 2 => road
+     * 3 => rail
+     */
+    public void loadRandomGround(int y) {  
+       int randGround = Greenfoot.getRandomNumber(100);
+       
+       // Water
+       if(randGround < PROBA_WATER) {
+           loadWater(y);
+       }
+       
+       // Plain
+       if(PROBA_WATER <= randGround && randGround < PROBA_PLAIN) {
+           loadPlain(y);
+       }
+       
+       // Road
+       if(PROBA_PLAIN <= randGround && randGround < PROBA_ROAD) {
+           loadRoad(y);
+       }
+       
+       // Rail
+       if(PROBA_ROAD <= randGround && randGround < PROBA_RAIL) {
+           loadRail(y); 
+       }
     }
    
+    // à compléter
     public void gameOver() {
        Greenfoot.stop();
+    }
+    
+    // défilage paysage
+    public void defile (){
+       
+        List <Actor> listActeurs = getObjects(Actor.class);
+        int i =0;
+        for(Actor act : listActeurs){
+            int y = act.getY();
+            int x = act.getX();
+            act.setLocation(x, y+1);
+            // si on trouve un objet encore au dessus de la MAP 
+            if (y<CELL_SIZE/2){
+                i= i+1;
+            }
+            //si l'objet sort de la MAP
+            if (y> SIZE_MAP + CELL_SIZE/2){
+                this.removeObject(act);
+            }
+        }
+        // si on a pas trouvé d'objet au dessus de la MAP : regénérer une ligne 
+        if (i==0){
+                loadRandomGround(-(CELL_SIZE/2)+1);
+            }
+        
+        
+        
+        
+        //isatEdge() --> boolean
     }
 }
