@@ -25,7 +25,7 @@ public class Map extends World {
 
     public Map() {    
         // Create a new world and setPaintOrder
-        super(SIZE_MAP, SIZE_MAP, 1);
+        super(SIZE_MAP, SIZE_MAP, 1,false);
         setPaintOrder(ScoreBoard.class,Mover.class,Rock.class,Obstacle.class,Background.class);
         
         // On commence par une plaine sans arbre en bas

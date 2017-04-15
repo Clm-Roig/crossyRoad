@@ -20,7 +20,7 @@ public class Rail extends Background
     
     public void addTrain() {
         Train train = new Train(this.direction);
-        // TODO : à peaufiner, on peut pas sortir de la map
-        getWorld().addObject(train,-5000,getY());        
+        // TODO : placement en X à peaufiner
+        getWorld().addObject(train,-1000,getY());        
     }  
 }
