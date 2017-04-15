@@ -18,10 +18,19 @@ public class Map extends World {
     public int PROBA_ROCK = 50; 
     public int PROBA_TRAIN = 100;
     
+    /* Les probas de sol sont cumulatives et sont traités dans l'ordre suivant : 
+     * water => plain => road => rail
+     * EXEMPLE
+     * public int PROBA_WATER = 15;     => probaWat = 15-0 = 15%
+     * public int PROBA_PLAIN = 75;     => probaPla = 75-15 = 60%
+     * public int PROBA_ROAD = 85;      => probaWat = 85 - 75 = 10%
+     * public int PROBA_RAIL = 100;     => probaWat = 100 - 85 = 15%%
+     */    
     public int PROBA_WATER = 25;
-    public int PROBA_RAIL = 25;
-    public int PROBA_PLAIN = 25;
-    public int PROBA_ROAD = 25;
+    public int PROBA_PLAIN = 50;
+    public int PROBA_ROAD = 75;
+    public int PROBA_RAIL = 100;  
+    
     
     // Misc
     public final int TRAIN_LIMIT_X = 2000;
@@ -42,11 +51,10 @@ public class Map extends World {
             addObject(new Plain(),i,SIZE_MAP - (CELL_SIZE/2));            
         }
         
-        int randGround;
+
         // On remplit aléatoirement le reste
         for(int i=SIZE_MAP - (CELL_SIZE*3)/2 ; i > 0 ; i = i-CELL_SIZE) {
-            randGround = Greenfoot.getRandomNumber(4);
-            this.loadGround(randGround,i);
+            this.loadRandomGround(i);
         }        
         
         // Ajout Player et score
@@ -82,9 +90,11 @@ public class Map extends World {
      * 2 => road
      * 3 => rail
      */
-    public void loadGround(int typeGround, int y) {  
+    public void loadRandomGround(int y) {  
+       int randGround = Greenfoot.getRandomNumber(100);
+       
        // Water
-       if(typeGround == 0) {
+       if(randGround < PROBA_WATER) {
            for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
                Water wat = new Water();
                addObject(wat,i,y);           
@@ -98,7 +108,7 @@ public class Map extends World {
        }
        
        // Plain
-       if(typeGround == 1) {
+       if(PROBA_WATER <= randGround && randGround < PROBA_PLAIN) {
            for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
                Plain pl = new Plain();
                addObject(pl,i,y);       
@@ -112,7 +122,7 @@ public class Map extends World {
        }
        
        // Road
-       if(typeGround == 2) {
+       if(PROBA_PLAIN <= randGround && randGround < PROBA_ROAD) {
            String direction;
            if(Greenfoot.getRandomNumber(2)==0) {
                 direction = "toLeft";
@@ -139,7 +149,7 @@ public class Map extends World {
        }
        
        // Rail
-       if(typeGround == 3) {
+       if(PROBA_ROAD <= randGround && randGround < PROBA_RAIL) {
            // Direction
            String direction;
            if(Greenfoot.getRandomNumber(2)==0) {
