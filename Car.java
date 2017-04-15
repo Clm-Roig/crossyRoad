@@ -14,6 +14,13 @@ public class Car extends Vehicle {
         float ratioHW = (float) getImage().getHeight()/getImage().getWidth();
         float newHeight = IMAGE_SIZE * ratioHW;
         this.getImage().scale(IMAGE_SIZE,(int)newHeight);    
+        
+        if(direction == "toRight") {
+            setRotation(0);
+        }
+        else {
+            setRotation(180);
+        }
     }
     
     /**

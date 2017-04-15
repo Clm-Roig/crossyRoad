@@ -14,13 +14,7 @@ public abstract class Vehicle extends Mover
         super();
         super.setSpeed(s);
                        
-        this.direction = direction;
-        if(direction == "toRight") {
-            setRotation(0);
-        }
-        else {
-            setRotation(180);
-        }
+        this.direction = direction;        
     } 
     
     // GET / SET
