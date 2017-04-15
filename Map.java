@@ -18,6 +18,10 @@ public class Map extends World {
     public static final int PROBA_ROCK = 50; 
     public static final int PROBA_TRAIN = 100;
     
+    public static final int PROBA_WATER = 25;
+    public static final int PROBA_RAIL = 25;
+    public static final int PROBA_PLAIN = 25;
+    public static final int PROBA_ROAD = 25;
     // Misc
     public final int TRAIN_LIMIT_X = 2000;
 
@@ -40,7 +44,7 @@ public class Map extends World {
         int typeGround;
         // On remplit aléatoirement le reste
         for(int i=SIZE_MAP - (CELL_SIZE*3)/2 ; i > 0 ; i = i-CELL_SIZE) {
-            typeGround= Greenfoot.getRandomNumber(4);
+            typeGround = Greenfoot.getRandomNumber(4);
             this.loadGround(typeGround,i);
         }        
         

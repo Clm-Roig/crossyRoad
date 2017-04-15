@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version 1.0
  */
 public class RailWithSignal extends Rail {
-    private final int DELAY_TRAIN = 400;
+    private final int DELAY_TRAIN = 350;
     private final int SIGNAL_SIZE = 25;
     private final int PLACE_OVAL_SIGNAL = 12;
     private final int DISTANCE_OVAL_SIGNAL = 13;
@@ -20,7 +20,7 @@ public class RailWithSignal extends Rail {
 
     public RailWithSignal(String direction) {
         super(direction);
-        this.delayTrainCounter = Greenfoot.getRandomNumber(150) + 250;
+        this.delayTrainCounter = Greenfoot.getRandomNumber(200) + 150;
         
         // Si le train va à droite, on le place à -1000 du premier rail de la ligne (à -1000 du bord gauche de la map donc)
         if(direction == "toRight") {

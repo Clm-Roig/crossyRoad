@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Train extends Vehicle
 {    
     public Train(String direction) {
-        super(direction,10);     
+        super(direction,12);     
         this.getImage().scale(getImage().getWidth(), 35);    
     }
     
