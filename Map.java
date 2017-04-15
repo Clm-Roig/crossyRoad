@@ -13,15 +13,16 @@ public class Map extends World {
     public static final int CELL_SIZE = 50;
     
     // Apparition proba (/100)
-    public static final int PROBA_CAR = 20;
-    public static final int PROBA_TREE = 10;   
-    public static final int PROBA_ROCK = 50; 
-    public static final int PROBA_TRAIN = 100;
+    public int PROBA_CAR = 20;
+    public int PROBA_TREE = 10;   
+    public int PROBA_ROCK = 50; 
+    public int PROBA_TRAIN = 100;
     
-    public static final int PROBA_WATER = 25;
-    public static final int PROBA_RAIL = 25;
-    public static final int PROBA_PLAIN = 25;
-    public static final int PROBA_ROAD = 25;
+    public int PROBA_WATER = 25;
+    public int PROBA_RAIL = 25;
+    public int PROBA_PLAIN = 25;
+    public int PROBA_ROAD = 25;
+    
     // Misc
     public final int TRAIN_LIMIT_X = 2000;
 
@@ -41,11 +42,11 @@ public class Map extends World {
             addObject(new Plain(),i,SIZE_MAP - (CELL_SIZE/2));            
         }
         
-        int typeGround;
+        int randGround;
         // On remplit aléatoirement le reste
         for(int i=SIZE_MAP - (CELL_SIZE*3)/2 ; i > 0 ; i = i-CELL_SIZE) {
-            typeGround = Greenfoot.getRandomNumber(4);
-            this.loadGround(typeGround,i);
+            randGround = Greenfoot.getRandomNumber(4);
+            this.loadGround(randGround,i);
         }        
         
         // Ajout Player et score
@@ -60,7 +61,7 @@ public class Map extends World {
     }
     
     /**
-     * Cette fonction supprimme les trains qui sont "loin" en dehors de la map pour éviter de surcharger la mémoire indéfiniment.
+     * Supprime les trains qui sont "loin" en dehors de la map pour éviter de surcharger la mémoire indéfiniment.
      */
     public void cleanTrainsOut() {
         List<Train> listT = getObjects(Train.class); 
@@ -72,7 +73,7 @@ public class Map extends World {
     }
     
     /** 
-     * Cette fonction place un objet Ground sur la carte selon l'entier passé en paramètre sur la ligne y.
+     * Place un objet Background sur la carte selon l'entier passé en paramètre sur la ligne y.
      *  
      * 0 <= y < SIZE_MAP
      * 
