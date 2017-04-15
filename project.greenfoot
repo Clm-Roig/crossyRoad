@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Sat Apr 15 10:57:21 CEST 2017
+#Sat Apr 15 11:35:35 CEST 2017
 target16.name=Car
 editor.swing.0.y=23
 editor.swing.0.x=0
@@ -13,7 +13,7 @@ dependency8.to=Tree
 target20.naviview.expanded=true
 target14.type=ClassTarget
 target19.naviview.expanded=true
-simulation.speed=51
+simulation.speed=49
 dependency25.type=UsesDependency
 dependency22.from=Map
 target15.width=80

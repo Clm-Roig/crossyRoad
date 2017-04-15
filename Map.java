@@ -15,7 +15,7 @@ public class Map extends World {
     public static final int PROBA_CAR = 20;
     public static final int PROBA_TREE = 10;   
     public static final int PROBA_ROCK = 50; 
-    public static final int PROBA_TRAIN = 50;
+    public static final int PROBA_TRAIN = 100;
 
     /**
      * Constructor for objects of class Map.
@@ -26,7 +26,7 @@ public class Map extends World {
     public Map() {    
         // Create a new world and setPaintOrder
         super(SIZE_MAP, SIZE_MAP, 1,false);
-        setPaintOrder(ScoreBoard.class,Mover.class,Rock.class,Obstacle.class,Background.class);
+        setPaintOrder(ScoreBoard.class,Player.class,Mover.class,Rock.class,Obstacle.class,Background.class);
         
         // On commence par une plaine sans arbre en bas
         for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
@@ -124,22 +124,17 @@ public class Map extends World {
                 direction = "toRight";
            } 
            
-           // Sur le premier rail de la ligne, on teste s'il y a un train (il sera placé en dehors de la map dans addTrain())
-           Rail rail = new Rail(direction);
-           addObject(rail,CELL_SIZE/2,y);  
-           
-           // Train ?
-           int isTrain = Greenfoot.getRandomNumber(100);
-           if(isTrain < PROBA_TRAIN) {
-               rail.addTrain();                  
-           }          
+           // Sur le premier rail de la ligne, on teste s'il y a un train                      
+           int probaTrain = Greenfoot.getRandomNumber(100);
+           boolean haveTrain = probaTrain < PROBA_TRAIN;
+           Rail rail = new Rail(direction,haveTrain);   
+           addObject(rail,CELL_SIZE/2,y);
            
            // On complète la ligne entière           
-           for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) { 
-               Rail rail2 = new Rail(direction);
+           for(int i=(CELL_SIZE*3)/2; i<SIZE_MAP ; i = i+CELL_SIZE) { 
+               Rail rail2 = new Rail(direction,false);
                addObject(rail2,i,y);              
-            }          
-            
+            }                     
        }         
      
    }
