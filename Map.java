@@ -124,7 +124,7 @@ public class Map extends World {
                 direction = "toRight";
            } 
            
-           // Sur le premier rail, on teste s'il y a un train
+           // Sur le premier rail de la ligne, on teste s'il y a un train (il sera placé en dehors de la map dans addTrain())
            Rail rail = new Rail(direction);
            addObject(rail,CELL_SIZE/2,y);  
            
