@@ -6,9 +6,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (Jade HENNEBERT & Clément ROIG) 
  * @version (1,0)
  */
-public class Car extends Vehicle {  
+public class Car extends Vehicle { 
+    private final int IMAGE_SIZE = 45;
+    
     public Car(String direction, int s) {
         super(direction,s);
+        float ratioHW = (float) getImage().getHeight()/getImage().getWidth();
+        float newHeight = IMAGE_SIZE * ratioHW;
+        this.getImage().scale(IMAGE_SIZE,(int)newHeight);    
     }
     
     /**

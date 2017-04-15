@@ -12,7 +12,6 @@ public class Road extends Background
     
     /**
      * Constructor for objects of class Road.
-     * 
      */
     public Road(String direction) {
         super();

@@ -8,14 +8,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Rail extends Background
 {
-
+    private String direction;
+    
     /**
-     * Constructor for objects of class Rail.
-     * 
+     * Constructor for objects of class Road.
      */
-    public Rail() {
+    public Rail(String direction) {
         super();
+        this.direction = direction;
     }
     
-    public void loadVehicle(){}
+    public void addTrain() {
+        getWorld().addObject(new Train(this.direction),getX(),getY());
+    }  
 }

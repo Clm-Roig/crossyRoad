@@ -15,6 +15,7 @@ public class Map extends World {
     public static final int PROBA_CAR = 20;
     public static final int PROBA_TREE = 10;   
     public static final int PROBA_ROCK = 50; 
+    public static final int PROBA_TRAIN = 50;
 
     /**
      * Constructor for objects of class Map.
@@ -108,15 +109,37 @@ public class Map extends World {
                    if(colorCar == 0) road.addRedCar();
                    if(colorCar == 1) road.addGreenCar();
                    if(colorCar == 2) road.addBlueCar();
-                }
+               }
             }
        }
        
        // Rail
        if(typeGround == 3) {
-           for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
-               addObject(new Rail(),i,y);
-            }
+           // Direction
+           String direction;
+           if(Greenfoot.getRandomNumber(2)==0) {
+                direction = "toLeft";
+           }
+           else {
+                direction = "toRight";
+           } 
+           
+           // Sur le premier rail, on teste s'il y a un train
+           Rail rail = new Rail(direction);
+           addObject(rail,CELL_SIZE/2,y);  
+           
+           // Train ?
+           int isTrain = Greenfoot.getRandomNumber(100);
+           if(isTrain < PROBA_TRAIN) {
+               rail.addTrain();                  
+           }          
+           
+           // On complète la ligne entière           
+           for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) { 
+               Rail rail2 = new Rail(direction);
+               addObject(rail2,i,y);              
+            }          
+            
        }         
      
    }
