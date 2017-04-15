@@ -119,22 +119,30 @@ public class Map extends World {
            String direction;
            if(Greenfoot.getRandomNumber(2)==0) {
                 direction = "toLeft";
+                
+                // On place le railWithSignal à droite
+                Rail railWS = new RailWithSignal(direction);   
+                addObject(railWS,SIZE_MAP - CELL_SIZE/2,y);         
+                
+                // On complète la ligne entière           
+                for(int i=CELL_SIZE/2; i<SIZE_MAP - CELL_SIZE/2 ; i = i+CELL_SIZE) { 
+                    Rail rail = new Rail(direction);
+                    addObject(rail,i,y);              
+                } 
            }
            else {
                 direction = "toRight";
-           } 
-           
-           // Sur le premier rail de la ligne, on teste s'il y a un train                      
-           int probaTrain = Greenfoot.getRandomNumber(100);
-           boolean haveTrain = probaTrain < PROBA_TRAIN;
-           Rail rail = new Rail(direction,haveTrain);   
-           addObject(rail,CELL_SIZE/2,y);
-           
-           // On complète la ligne entière           
-           for(int i=(CELL_SIZE*3)/2; i<SIZE_MAP ; i = i+CELL_SIZE) { 
-               Rail rail2 = new Rail(direction,false);
-               addObject(rail2,i,y);              
-            }                     
+                
+                // On place le railWithSignal à gauche
+                Rail railWS = new RailWithSignal(direction);   
+                addObject(railWS,CELL_SIZE/2,y);
+                
+                // On complète la ligne entière           
+                for(int i=(CELL_SIZE*3)/2; i<SIZE_MAP ; i = i+CELL_SIZE) { 
+                    Rail rail = new Rail(direction);
+                    addObject(rail,i,y);              
+                } 
+           }         
        }         
      
    }

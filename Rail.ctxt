@@ -1,11 +1,11 @@
 #BlueJ class context
 comment0.target=Rail
 comment0.text=\n\ Write\ a\ description\ of\ class\ Rail\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=direction\ train
-comment1.target=Rail(java.lang.String,\ boolean)
+comment1.params=direction
+comment1.target=Rail(java.lang.String)
 comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Road.\n
 comment2.params=
-comment2.target=void\ act()
+comment2.target=java.lang.String\ getDirection()
 comment3.params=
-comment3.target=void\ addTrain()
+comment3.target=void\ act()
 numComments=4
