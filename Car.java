@@ -11,9 +11,6 @@ public class Car extends Vehicle {
         super(direction,s);
     }
     
-    public int getSpeed() {return this.speed;}
-    public void setSpeed(int s) {this.speed = s;}
-    
     /**
      * Act - do whatever the Car wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

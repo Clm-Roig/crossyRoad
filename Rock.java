@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Rock extends Actor {
+public class Rock extends Platform {
     private final int IMAGE_SIZE = 50;
     public Rock() {
         this.getImage().scale(IMAGE_SIZE,IMAGE_SIZE);   
