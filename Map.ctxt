@@ -3,9 +3,14 @@ comment0.target=Map
 comment0.text=\n\ Write\ a\ description\ of\ class\ Map\ here.\n\ \n\ @author\ (Jade\ HENNEBERT\ &\ Cl\u00E9ment\ ROIG)\ \n\ @version\ (1,0)\n
 comment1.params=
 comment1.target=Map()
-comment2.params=typeGround\ y
-comment2.target=void\ loadGround(int,\ int)
-comment2.text=\ Cette\ fonction\ place\ un\ objet\ Ground\ sur\ la\ carte\ \n\ selon\ l'entier\ pass\u00E9\ en\ param\u00E8tre\ sur\ la\ ligne\ y.\n\ 0\ <\=\ y\ <\ NB_ROW\n\ \n\ 0\ \=>\ water\n\ 1\ \=>\ plain\n\ 2\ \=>\ road\n\ 3\ \=>\ rail\n
+comment2.params=
+comment2.target=void\ act()
 comment3.params=
-comment3.target=void\ gameOver()
-numComments=4
+comment3.target=void\ cleanTrainsOut()
+comment3.text=\n\ Cette\ fonction\ supprimme\ les\ trains\ qui\ sont\ "loin"\ en\ dehors\ de\ la\ map\ pour\ \u00E9viter\ de\ surcharger\ la\ m\u00E9moire\ ind\u00E9finiment.\n
+comment4.params=typeGround\ y
+comment4.target=void\ loadGround(int,\ int)
+comment4.text=\ \n\ Cette\ fonction\ place\ un\ objet\ Ground\ sur\ la\ carte\ selon\ l'entier\ pass\u00E9\ en\ param\u00E8tre\ sur\ la\ ligne\ y.\n\ \ \n\ 0\ <\=\ y\ <\ SIZE_MAP\n\ \n\ 0\ \=>\ water\n\ 1\ \=>\ plain\n\ 2\ \=>\ road\n\ 3\ \=>\ rail\n
+comment5.params=
+comment5.target=void\ gameOver()
+numComments=6

@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List;
 
 /**
  * Write a description of class Map here.
@@ -16,6 +17,9 @@ public class Map extends World {
     public static final int PROBA_TREE = 10;   
     public static final int PROBA_ROCK = 50; 
     public static final int PROBA_TRAIN = 100;
+    
+    // Misc
+    public final int TRAIN_LIMIT_X = 2000;
 
     /**
      * Constructor for objects of class Map.
@@ -44,20 +48,36 @@ public class Map extends World {
         addObject(new Player(),SIZE_MAP/2,SIZE_MAP - CELL_SIZE/2);
         
         this.score = new ScoreBoard("Score : ");
-        addObject(this.score,150,CELL_SIZE/2);
-        
+        addObject(this.score,150,CELL_SIZE/2);        
     }
     
-   /* Cette fonction place un objet Ground sur la carte 
-    * selon l'entier passé en paramètre sur la ligne y.
-    * 0 <= y < NB_ROW
-    * 
-    * 0 => water
-    * 1 => plain
-    * 2 => road
-    * 3 => rail
-    */
-   public void loadGround(int typeGround, int y) {  
+    public void act() {
+        cleanTrainsOut();
+    }
+    
+    /**
+     * Cette fonction supprimme les trains qui sont "loin" en dehors de la map pour éviter de surcharger la mémoire indéfiniment.
+     */
+    public void cleanTrainsOut() {
+        List<Train> listT = getObjects(Train.class); 
+        for(Train tr : listT) {
+            if(tr.getX() > TRAIN_LIMIT_X || tr.getX() < -TRAIN_LIMIT_X ) {
+                removeObject(tr);
+            }
+        }
+    }
+    
+    /** 
+     * Cette fonction place un objet Ground sur la carte selon l'entier passé en paramètre sur la ligne y.
+     *  
+     * 0 <= y < SIZE_MAP
+     * 
+     * 0 => water
+     * 1 => plain
+     * 2 => road
+     * 3 => rail
+     */
+    public void loadGround(int typeGround, int y) {  
        // Water
        if(typeGround == 0) {
            for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
@@ -145,9 +165,9 @@ public class Map extends World {
            }         
        }         
      
-   }
+    }
    
-   public void gameOver() {
+    public void gameOver() {
        Greenfoot.stop();
-   }
+    }
 }
