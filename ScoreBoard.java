@@ -8,6 +8,7 @@ import greenfoot.*;
  */
 public class ScoreBoard extends Actor {
     private int value = 0;
+    private int fontSize = 20;
     private String text;
 
     /**
@@ -21,9 +22,17 @@ public class ScoreBoard extends Actor {
      * Create a ScoreBoard with a given text prefix, initialized to zero.
      */
     public ScoreBoard(String prefix) {
-        text = prefix;
-        int imageWidth= (text.length() + 2) * 10;
-        setImage(new GreenfootImage(imageWidth, 16));
+        this.text = prefix;
+        
+        boolean bold = true;
+        boolean italic = false;
+        int imageWidth = (text.length() + 2) * 30;
+        
+        setImage(new GreenfootImage(imageWidth,this.fontSize*2));        
+        
+        Font font = new Font(bold,italic,this.fontSize);
+        getImage().setFont(font);
+        getImage().setColor(new Color(255,255,255));
         updateImage();
     }
 
@@ -41,6 +50,6 @@ public class ScoreBoard extends Actor {
     private void updateImage() {
         GreenfootImage image = getImage();
         image.clear();
-        image.drawString(text + value, 1, 12);
+        image.drawString(text + value, 1, this.fontSize);
     }
 }

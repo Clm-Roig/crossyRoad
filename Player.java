@@ -48,25 +48,27 @@ public class Player extends Mover
     
     public void checkMove() {
         if(walkingDelayCounter >= WALKING_DELAY) {
+            boolean heMoved = false;
             
             if(Greenfoot.isKeyDown("up")) {
                 if(getY() - this.speed > 0) {
                     moveUp();
-                    walkingDelayCounter = 0;
+                    heMoved = true;
+                    ((Map)getWorld()).score.increment(1);
                 }
             }
             
             if(Greenfoot.isKeyDown("right")) {
                 if(getX() + this.speed < ((Map)getWorld()).SIZE_MAP) {
                     moveRight();
-                    walkingDelayCounter = 0;
+                    heMoved = true;
                 }
             }
             
             if(Greenfoot.isKeyDown("left")){
                 if(getX() - this.speed > 0) {
                     moveLeft();  
-                    walkingDelayCounter = 0;
+                    heMoved = true;
                 }
             }
            
@@ -74,8 +76,13 @@ public class Player extends Mover
             if(Greenfoot.isKeyDown("down")){
                 if(getY() + this.speed < ((Map)getWorld()).SIZE_MAP) {
                     moveDown();  
-                    walkingDelayCounter = 0;
+                    heMoved = true;
                 }
+            }
+            
+            // En cas de mouvement, on réinitialise le compteur
+            if(heMoved) {
+                walkingDelayCounter = 0;
             }
             
         }

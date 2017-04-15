@@ -19,11 +19,13 @@ public class Map extends World {
     /**
      * Constructor for objects of class Map.
      */
+    
+    public ScoreBoard score;
 
     public Map() {    
         // Create a new world and setPaintOrder
         super(SIZE_MAP, SIZE_MAP, 1);
-        setPaintOrder(Mover.class,Rock.class,Obstacle.class,Background.class);
+        setPaintOrder(ScoreBoard.class,Mover.class,Rock.class,Obstacle.class,Background.class);
         
         // On commence par une plaine sans arbre en bas
         for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
@@ -37,8 +39,12 @@ public class Map extends World {
             this.loadGround(typeGround,i);
         }        
         
-        // Ajout Player 
+        // Ajout Player et score
         addObject(new Player(),SIZE_MAP/2,SIZE_MAP - CELL_SIZE/2);
+        
+        this.score = new ScoreBoard("Score : ");
+        addObject(this.score,150,CELL_SIZE/2);
+        
     }
     
    /* Cette fonction place un objet Ground sur la carte 
