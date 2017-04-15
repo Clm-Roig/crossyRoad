@@ -50,7 +50,8 @@ public class Player extends Mover
         if (y > (SIZE_MAP + CELL_SIZE/2)){
             killPlayer();
         }
-        
+   
+		
         walkingDelayCounter++;
     }  
     

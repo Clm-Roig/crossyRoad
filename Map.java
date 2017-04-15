@@ -96,7 +96,7 @@ public class Map extends World {
                wat.addRock(CELL_SIZE);
                int isReward = Greenfoot.getRandomNumber(100);
                if(isReward < PROBA_REWARD){
-                   wat.addReward(CELL_SIZE);
+                   wat.addReward();
                 }
             }
         }
@@ -115,7 +115,7 @@ public class Map extends World {
                    pl.addTree();
                }
                else if(isReward < PROBA_REWARD){
-                   pl.addReward(CELL_SIZE);
+                   pl.addReward();
                 }
         }
     }

@@ -14,8 +14,5 @@ public abstract class Background extends Actor
     public Background(){
         this.getImage().scale(IMAGE_SIZE,IMAGE_SIZE);
     }
-    
-    public void addReward(int cell_size) {
-        getWorld().addObject(new Reward(),getX(),getY());
-    }
+   
 }
