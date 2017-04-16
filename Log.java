@@ -1,19 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Car here.
+ * Write a description of class Log here.
  * 
- * @author (Jade HENNEBERT & Clément ROIG) 
- * @version (1,0)
+ * @author (your name) 
+ * @version (a version number or a date)
  */
-public class Car extends Vehicle { 
-    private final int IMAGE_SIZE = 45;
+public class Log extends Platform {
+    private final int IMAGE_SIZE = 50;
     
-    public Car(String direction, int s) {
-        super(direction,s);
-        float ratioHW = (float) getImage().getHeight()/getImage().getWidth();
-        float newHeight = IMAGE_SIZE * ratioHW;
-        this.getImage().scale(IMAGE_SIZE,(int)newHeight);    
+    public Log(String direction) {
+        super(1,direction);
+        this.getImage().scale(IMAGE_SIZE,IMAGE_SIZE);   
         
         if(direction == "toRight") {
             setRotation(0);
@@ -24,13 +22,13 @@ public class Car extends Vehicle {
     }
     
     /**
-     * Act - do whatever the Car wants to do. This method is called whenever
+     * Act - do whatever the Log wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() {
         if(getDirection() == "toLeft") {
             moveLeft();
-            
+        
             if(isAtEdge()) {
                 setLocation(this.getWorld().getWidth()-1,getY());
             }
@@ -41,7 +39,8 @@ public class Car extends Vehicle {
             
             if(isAtEdge()) {
                 setLocation(1,getY());
-            }
+            }     
         }
-    }
+
+    }    
 }

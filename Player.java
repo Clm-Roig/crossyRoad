@@ -17,8 +17,7 @@ public class Player extends Mover
     private int walkingDelayCounter = 0;
     
     public Player() {
-        super();
-        super.setSpeed(((Map)getWorld()).CELL_SIZE);
+        super(CELL_SIZE);
         this.getImage().scale(IMAGE_SIZE,IMAGE_SIZE);
         setRotation(270);
     }

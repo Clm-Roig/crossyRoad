@@ -10,10 +10,8 @@ public abstract class Vehicle extends Mover
 {
     private String direction;    
     
-    public Vehicle(String direction, int s) { 
-        super();
-        super.setSpeed(s);
-                       
+    public Vehicle(String direction, int speed) { 
+        super(speed);                       
         this.direction = direction;        
     } 
     

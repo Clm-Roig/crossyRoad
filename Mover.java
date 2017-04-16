@@ -9,7 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public abstract class Mover extends Actor {
     public int speed;
     
-    public Mover() {}
+    public Mover(int s) {
+        this.speed = s;
+    }
     
     public void setSpeed(int s) {this.speed = s;}
     public int getSpeed() {return this.speed;}

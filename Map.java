@@ -98,20 +98,28 @@ public class Map extends World {
     
     // Les differéntes méthodes de chargement de background        
     public void loadWater(int y){
+        String direction;
+        if(Greenfoot.getRandomNumber(2)==0) {
+            direction = "toLeft";
+        }
+        else {
+            direction = "toRight";
+        }  
+        
         for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
-        Water wat = new Water();
-        addObject(wat,i,y);           
-            
-        // Rock ?
-        int isRock = Greenfoot.getRandomNumber(100);
-            if(isRock < PROBA_ROCK) {
-               wat.addRock(CELL_SIZE);
-               int isReward = Greenfoot.getRandomNumber(100);
-               if(isReward < PROBA_REWARD){
-                   wat.addReward();
+            Water wat = new Water(direction);
+            addObject(wat,i,y);           
+                
+            // Rock ?
+            int isRock = Greenfoot.getRandomNumber(100);
+                if(isRock < PROBA_ROCK) {
+                   wat.addRock(CELL_SIZE);
+                   int isReward = Greenfoot.getRandomNumber(100);
+                   if(isReward < PROBA_REWARD){
+                       wat.addReward();
+                    }
                 }
             }
-        }
     }    
     
     public void loadPlain(int y){
@@ -133,28 +141,28 @@ public class Map extends World {
     
     public void loadRoad(int y){
         String direction;
-           if(Greenfoot.getRandomNumber(2)==0) {
-                direction = "toLeft";
+        if(Greenfoot.getRandomNumber(2)==0) {
+            direction = "toLeft";
+        }
+        else {
+            direction = "toRight";
+        }  
+        
+        // Which color of Car for this road ?
+        int colorCar = Greenfoot.getRandomNumber(3);
+        
+        for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
+           Road road = new Road(direction);
+           addObject(road,i,y);               
+           
+           // Car ?
+           int isCar = Greenfoot.getRandomNumber(100);
+           if(isCar < PROBA_CAR) {
+               if(colorCar == 0) road.addRedCar();
+               if(colorCar == 1) road.addGreenCar();
+               if(colorCar == 2) road.addBlueCar();
            }
-           else {
-                direction = "toRight";
-           }  
-           
-           // Which color of Car for this road ?
-           int colorCar = Greenfoot.getRandomNumber(3);
-           
-           for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
-               Road road = new Road(direction);
-               addObject(road,i,y);               
-               
-               // Car ?
-               int isCar = Greenfoot.getRandomNumber(100);
-               if(isCar < PROBA_CAR) {
-                   if(colorCar == 0) road.addRedCar();
-                   if(colorCar == 1) road.addGreenCar();
-                   if(colorCar == 2) road.addBlueCar();
-               }
-            }
+        }
         
     }
     

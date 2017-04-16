@@ -16,18 +16,10 @@ public class Train extends Vehicle
     public void act() {
         if(getDirection() == "toLeft") {
             moveLeft();
-            
-            if(isAtEdge()) {
-                
-            }
         }
         
         if(getDirection() == "toRight") {
-            moveRight();
-            
-            if(isAtEdge()) {
-                
-            }
+            moveRight();            
         }
     }    
 }
