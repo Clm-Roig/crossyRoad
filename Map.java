@@ -17,7 +17,7 @@ public class Map extends World {
     public int PROBA_TREE = 10;   
     public int PROBA_ROCK = 50; 
     public int PROBA_TRAIN = 100;
-    public int PROBA_REWARD = 20;
+    public int PROBA_REWARD = 5;
     
     /* Les probas de sol sont cumulatives et sont traités dans l'ordre suivant : 
      * water => plain => road => rail
@@ -41,28 +41,33 @@ public class Map extends World {
      */
     
     public ScoreBoard score;
+    public ScoreBoard Bonus;
 
     public Map() {    
         // Create a new world and setPaintOrder
         super(SIZE_MAP, SIZE_MAP, 1,false);
-        setPaintOrder(ScoreBoard.class,Player.class,Mover.class,Rock.class,Obstacle.class,Background.class);
+        setPaintOrder(ScoreBoard.class,Item.class,Player.class,Mover.class,Rock.class,Obstacle.class,Background.class);
         
         // On commence par une plaine sans arbre en bas
         for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
-            addObject(new Plain(),i,SIZE_MAP - (CELL_SIZE/2));            
+            addObject(new Plain(),i,SIZE_MAP - (CELL_SIZE/2));
+            addObject(new Plain(),i,SIZE_MAP - (3*CELL_SIZE/2));
         }
         
 
         // On remplit aléatoirement le reste
-        for(int i=SIZE_MAP - (CELL_SIZE*3)/2 ; i > 0 ; i = i-CELL_SIZE) {
+        for(int i=SIZE_MAP - (CELL_SIZE*5)/2 ; i > 0 ; i = i-CELL_SIZE) {
             this.loadRandomGround(i);
         }        
         
         // Ajout Player et score
-        addObject(new Player(),SIZE_MAP/2,SIZE_MAP - CELL_SIZE/2) ;
+        addObject(new Player(),SIZE_MAP/2,SIZE_MAP - (3*CELL_SIZE/2)) ;
         
         this.score = new ScoreBoard("Score : ");
         addObject(this.score,150,CELL_SIZE/2); 
+        
+        this.Bonus = new ScoreBoard("Bonus : ");
+        addObject(this.score,350, CELL_SIZE/2);
               
     }
     
@@ -226,6 +231,7 @@ public class Map extends World {
             int y = act.getY();
             int x = act.getX();
             act.setLocation(x, y+1);
+            // si l'acteur est un rocher 
             // si on trouve un objet encore au dessus de la MAP 
             if (y<CELL_SIZE/2){
                 i= i+1;
@@ -239,10 +245,6 @@ public class Map extends World {
         if (i==0){
                 loadRandomGround(-(CELL_SIZE/2)+1);
             }
-        
-        
-        
-        
-        //isatEdge() --> boolean
+       
     }
 }

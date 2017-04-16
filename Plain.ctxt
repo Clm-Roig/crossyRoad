@@ -8,6 +8,4 @@ comment2.params=
 comment2.target=void\ addTree()
 comment3.params=
 comment3.target=void\ loadVehicle()
-comment4.params=
-comment4.target=void\ addReward()
-numComments=5
+numComments=4

@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Rock extends Platform {
     private final int IMAGE_SIZE = 50;
+    private String direction;
     public Rock() {
         this.getImage().scale(IMAGE_SIZE,IMAGE_SIZE);   
     }
@@ -17,6 +18,21 @@ public class Rock extends Platform {
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() {
-        // Add your action code here.
+       /* if(getDirection() == "toLeft") {
+            moveLeft();
+            
+            if(isAtEdge()) {
+                setLocation(this.getWorld().getWidth()+1,getY());
+            }
+        }
+        
+        if(getDirection() == "toRight") {
+            moveRight();
+            
+            if(isAtEdge()) {
+                setLocation(-1,getY());
+            }
+        }*/
     }    
+     
 }
