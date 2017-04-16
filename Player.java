@@ -44,14 +44,22 @@ public class Player extends Mover
                 killPlayer();
             }
         }
-        
+        // Si le Player rencontre un item, le prend
+        List<Reward> listReward = getObjectsAtOffset(0,0,Reward.class);
+        if(!listReward.isEmpty()){
+            for (Reward rew : listReward){
+                rew.taken();
+                ((Map)getWorld()).score.increment(5);
+                ((Map)getWorld()).removeObject(rew);
+            }
+        }
         // Si on est hors du champs le joueur meurt
         int y = this.getY();
         if (y > (SIZE_MAP + CELL_SIZE/2)){
             killPlayer();
         }
    
-		
+        
         walkingDelayCounter++;
     }  
     

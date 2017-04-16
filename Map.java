@@ -41,7 +41,6 @@ public class Map extends World {
      */
     
     public ScoreBoard score;
-    public ScoreBoard Bonus;
 
     public Map() {    
         // Create a new world and setPaintOrder
@@ -65,9 +64,6 @@ public class Map extends World {
         
         this.score = new ScoreBoard("Score : ");
         addObject(this.score,150,CELL_SIZE/2); 
-        
-        this.Bonus = new ScoreBoard("Bonus : ");
-        addObject(this.score,350, CELL_SIZE/2);
               
     }
     
@@ -230,8 +226,10 @@ public class Map extends World {
         for(Actor act : listActeurs){
             int y = act.getY();
             int x = act.getX();
-            act.setLocation(x, y+1);
-            // si l'acteur est un rocher 
+            if (!(act instanceof ScoreBoard)){
+                act.setLocation(x, y+1);
+            }
+            
             // si on trouve un objet encore au dessus de la MAP 
             if (y<CELL_SIZE/2){
                 i= i+1;

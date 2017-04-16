@@ -23,10 +23,8 @@ public class Reward extends Item
         // Add your action code here.
     }    
     
-    /*public void taken(){
-        List<Player> listPlatform = getObjectsAtOffset(0,0,Player.class);
-            if(!listPlayer.isEmpty()) {
-                ScoreBoard.increment();
-            }
-    }*/
+    //animation de la prise du bonus
+    public void taken(){
+        this.turn(360);
+    }
 }
