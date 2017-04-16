@@ -20,7 +20,7 @@ comment7.params=y
 comment7.target=void\ loadRail(int)
 comment8.params=y
 comment8.target=void\ loadRandomGround(int)
-comment8.text=\ \n\ Place\ un\ objet\ Background\ sur\ la\ carte\ selon\ l'entier\ pass\u00E9\ en\ param\u00E8tre\ sur\ la\ ligne\ y.\n\ \ \n\ 0\ <\=\ y\ <\ SIZE_MAP\n\ \n\ 0\ \=>\ water\n\ 1\ \=>\ plain\n\ 2\ \=>\ road\n\ 3\ \=>\ rail\n
+comment8.text=\ \n\ Place\ un\ objet\ Background\ sur\ la\ carte\ selon\ l'entier\ pass\u00E9\ en\ param\u00E8tre\ sur\ la\ ligne\ y.\n
 comment9.params=
 comment9.target=void\ gameOver()
 numComments=11

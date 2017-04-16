@@ -30,11 +30,12 @@ public class Map extends World {
     public int PROBA_WATER = 25;
     public int PROBA_PLAIN = 50;
     public int PROBA_ROAD = 75;
-    public int PROBA_RAIL = 100;  
-    
+    public int PROBA_RAIL = 100;      
     
     // Misc
-    public final int TRAIN_LIMIT_X = 2000;
+    public final int TRAIN_LIMIT_X = 2000; 
+    public final int INIT_POSITION_PLAYER_X = SIZE_MAP/2;
+    public final int INIT_POSITION_PLAYER_Y = SIZE_MAP - (3*CELL_SIZE/2);
 
     /**
      * Constructor for objects of class Map.
@@ -62,7 +63,7 @@ public class Map extends World {
         
         // Ajout Player et score        
         this.joueur = new Player();
-        addObject(joueur,SIZE_MAP/2,SIZE_MAP - (3*CELL_SIZE/2));
+        addObject(joueur,INIT_POSITION_PLAYER_X,INIT_POSITION_PLAYER_Y);
         
         this.score = new ScoreBoard("Score : ");
         addObject(this.score,150,CELL_SIZE/2); 
@@ -72,11 +73,9 @@ public class Map extends World {
     public void act() {
         cleanTrainsOut();
         boolean aBougé = false;
-        int initialXPlayer = SIZE_MAP/2;
-        int initialYPlayer = SIZE_MAP - (3*CELL_SIZE/2);
         
         // On n'active pas le défilement tant que le joueur n'a pas bougé de sa position initiale
-        if(this.joueur.getY() != initialYPlayer || this.joueur.getX() != initialXPlayer && !aBougé) {
+        if(this.joueur.getY() != INIT_POSITION_PLAYER_Y || this.joueur.getX() != INIT_POSITION_PLAYER_X && !aBougé) {
             aBougé = true;
         }  
         
@@ -192,13 +191,6 @@ public class Map extends World {
     
     /** 
      * Place un objet Background sur la carte selon l'entier passé en paramètre sur la ligne y.
-     *  
-     * 0 <= y < SIZE_MAP
-     * 
-     * 0 => water
-     * 1 => plain
-     * 2 => road
-     * 3 => rail
      */
     public void loadRandomGround(int y) {  
        int randGround = Greenfoot.getRandomNumber(100);
@@ -229,7 +221,7 @@ public class Map extends World {
        Greenfoot.stop();
     }
     
-    // défilage paysage
+    // Défilage Map
     public void defile (){
         List <Actor> listActeurs = getObjects(Actor.class);
         int i=0;
