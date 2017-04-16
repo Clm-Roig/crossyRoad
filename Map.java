@@ -218,7 +218,10 @@ public class Map extends World {
    
     // à compléter
     public void gameOver() {
-       Greenfoot.stop();
+        Greenfoot.stop();
+        while(!Greenfoot.isKeyDown("enter")){}       
+        Greenfoot.setWorld(new Map());
+        Greenfoot.start();       
     }
     
     // Défilage Map

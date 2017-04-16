@@ -110,6 +110,7 @@ public class Player extends Mover
         this.setRotation(0);
         this.setImage("skull.png");
         this.getImage().scale(IMAGE_SIZE,IMAGE_SIZE);
+        getWorld().repaint();
 
         ((Map)getWorld()).gameOver();
     }
