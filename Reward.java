@@ -25,6 +25,7 @@ public class Reward extends Item
     
     //animation de la prise du bonus
     public void taken(){
+        
         this.turn(360);
     }
 }

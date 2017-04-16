@@ -229,7 +229,7 @@ public class Map extends World {
             if (!(act instanceof ScoreBoard)){
                 act.setLocation(x, y+1);
             }
-            
+           
             // si on trouve un objet encore au dessus de la MAP 
             if (y<CELL_SIZE/2){
                 i= i+1;
