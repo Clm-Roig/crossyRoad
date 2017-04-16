@@ -55,11 +55,10 @@ public class Player extends Mover
         }
         
         // Si le Player rencontre un item, le prend
-        Reward reward = (Reward)getOneIntersectingObject(Reward.class);
-        if(reward != null){ 
-            reward.taken();
-            ((Map)getWorld()).score.increment(5);
-            ((Map)getWorld()).removeObject(reward);            
+        Coin coin = (Coin)getOneIntersectingObject(Coin.class);
+        if(coin != null){ 
+            coin.taken();
+            ((Map)getWorld()).score.increment(5);          
         }     
    
         
@@ -107,6 +106,51 @@ public class Player extends Mover
             
         }
     }
+    
+    
+    // Ré-implémentation des fonctions de déplacement (cas des plateformes qui ne laisse pas le joueur nécessairement en face d'une cellule)
+    public void moveLeft() {
+        setRotation(180);
+        Obstacle obst = (Obstacle) getOneObjectAtOffset(-this.speed,0,Obstacle.class);
+        if(obst == null) {
+            Background bg = (Background) getOneObjectAtOffset(-this.speed,0,Background.class);
+            move(this.speed);
+            setLocation(bg.getX(),bg.getY());
+        }
+    }
+    
+    // 0° pour aller vers la droite
+    public void moveRight() {
+        setRotation(0);
+        Obstacle obst = (Obstacle) getOneObjectAtOffset(this.speed,0,Obstacle.class);
+        if(obst == null) {
+            Background bg = (Background) getOneObjectAtOffset(+this.speed,0,Background.class);
+            move(this.speed);
+            setLocation(bg.getX(),bg.getY());
+        }        
+    }
+    
+    // 270° pour aller vers le haut
+    public void moveUp() {
+        setRotation(270);
+        Obstacle obst = (Obstacle) getOneObjectAtOffset(0,-this.speed,Obstacle.class);
+        if(obst == null) {
+            Background bg = (Background) getOneObjectAtOffset(0,-this.speed,Background.class);
+            move(this.speed);
+            setLocation(bg.getX(),bg.getY());
+        }
+    }
+    
+    // 90° pour aller vers le bas
+    public void moveDown() {
+        setRotation(90);
+        Obstacle obst = (Obstacle) getOneObjectAtOffset(0,this.speed,Obstacle.class);
+        if(obst == null) {
+            Background bg = (Background) getOneObjectAtOffset(0,+this.speed,Background.class);
+            move(this.speed);
+            setLocation(bg.getX(),bg.getY());
+        }
+   }
     
     public void killPlayer() {        
         // Apparition d'un crane

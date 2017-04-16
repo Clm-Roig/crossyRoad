@@ -17,7 +17,7 @@ public class Map extends World {
     public int PROBA_TREE = 10;   
     public int PROBA_LOG = 30; 
     public int PROBA_TRAIN = 100;
-    public int PROBA_REWARD = 5;
+    public int PROBA_COIN = 5;
     
     /* Les probas de sol sont cumulatives et sont traités dans l'ordre suivant : 
      * water => plain => road => rail
@@ -120,9 +120,9 @@ public class Map extends World {
             int isLog = Greenfoot.getRandomNumber(100);
                 if(isLog < PROBA_LOG) {
                    Platform log = wat.addLog(CELL_SIZE);
-                   int isReward = Greenfoot.getRandomNumber(100);
-                   if(isReward < PROBA_REWARD){
-                       wat.addRewardOnPlatform(log);
+                   int isCoin = Greenfoot.getRandomNumber(100);
+                   if(isCoin < PROBA_COIN){
+                       wat.addCoinOnPlatform(log);
                     }
                 }
             }
@@ -135,12 +135,12 @@ public class Map extends World {
                
                // Tree ?
                int isTree = Greenfoot.getRandomNumber(100);
-               int isReward = Greenfoot.getRandomNumber(100);
+               int isCoin = Greenfoot.getRandomNumber(100);
                if(isTree < PROBA_TREE) {
                    pl.addTree();
                }
-               else if(isReward < PROBA_REWARD){
-                   pl.addReward();
+               else if(isCoin < PROBA_COIN){
+                   pl.addCoin();
                 }
         }
     }

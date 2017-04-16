@@ -6,8 +6,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Reward extends Item {
-    public Reward() {
+public class Coin extends Item {
+    public Coin() {
         super();  
     }
         
@@ -18,5 +18,8 @@ public class Reward extends Item {
     // Animation de la prise de Reward
     public void taken(){        
         this.turn(360);
+        GreenfootSound sound = new GreenfootSound("coin.wav");
+        sound.play();
+        getWorld().removeObject(this);
     }
 }

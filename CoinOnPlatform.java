@@ -6,13 +6,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class RewardOnPlatform extends Reward
+public class CoinOnPlatform extends Coin
 {
     Platform plat;
     
-    public RewardOnPlatform() {}
+    public CoinOnPlatform() {}
     
-    public RewardOnPlatform(Platform plat) {
+    public CoinOnPlatform(Platform plat) {
         super();
         this.plat = plat; 
     }

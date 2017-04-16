@@ -15,11 +15,11 @@ public abstract class Background extends Actor
         this.getImage().scale(IMAGE_SIZE,IMAGE_SIZE);
     }
    
-    public void addReward() {
-        this.getWorld().addObject(new Reward(),getX(),getY());
+    public void addCoin() {
+        this.getWorld().addObject(new Coin(),getX(),getY());
     }
     
-    public void addRewardOnPlatform(Platform plat) {
-        this.getWorld().addObject(new RewardOnPlatform(plat),getX(),getY());
+    public void addCoinOnPlatform(Platform plat) {
+        this.getWorld().addObject(new CoinOnPlatform(plat),getX(),getY());
     }
 }
