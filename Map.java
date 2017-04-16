@@ -15,7 +15,7 @@ public class Map extends World {
     // Apparition proba (/100)
     public int PROBA_CAR = 20;
     public int PROBA_TREE = 10;   
-    public int PROBA_ROCK = 50; 
+    public int PROBA_LOG = 30; 
     public int PROBA_TRAIN = 100;
     public int PROBA_REWARD = 5;
     
@@ -106,17 +106,23 @@ public class Map extends World {
             direction = "toRight";
         }  
         
+        // Speed sur l'eau (entre 1 et 3)
+        int speed = Greenfoot.getRandomNumber(3) + 1;
+        
         for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
-            Water wat = new Water(direction);
+            
+            
+            
+            Water wat = new Water(direction,speed);
             addObject(wat,i,y);           
                 
-            // Rock ?
-            int isRock = Greenfoot.getRandomNumber(100);
-                if(isRock < PROBA_ROCK) {
-                   wat.addRock(CELL_SIZE);
+            // Log ?
+            int isLog = Greenfoot.getRandomNumber(100);
+                if(isLog < PROBA_LOG) {
+                   Platform log = wat.addLog(CELL_SIZE);
                    int isReward = Greenfoot.getRandomNumber(100);
                    if(isReward < PROBA_REWARD){
-                       wat.addReward();
+                       wat.addRewardOnPlatform(log);
                     }
                 }
             }
@@ -227,7 +233,7 @@ public class Map extends World {
     // Fin de partie
     public void gameOver() {
         // Image grise sur toute la map
-        setPaintOrder(EndScreen.class);
+        setPaintOrder(Player.class,EndScreen.class);
         addObject(new EndScreen(),SIZE_MAP/2,SIZE_MAP/2);
         
         // Texte

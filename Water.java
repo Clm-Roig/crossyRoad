@@ -9,19 +9,23 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Water extends Background
 {
     private String direction;  
+    private int speed;
     /**
      * Constructor for objects of class Water.
      */
-    public Water(String direction){
+    public Water(String direction, int speed){
         super();
         this.direction = direction;
+        this.speed = speed;
     }
     
     // GET / SET
     public String getDirection() {return this.direction;}
     
-    public void addRock(int cell_size) {
-        getWorld().addObject(new Log(this.direction),getX(),getY());
+    public Log addLog(int cell_size) {
+        Log log = new Log(this.direction, this.speed);
+        getWorld().addObject(log,getX(),getY());
+        return log;
     }     
     
 }

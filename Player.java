@@ -27,36 +27,40 @@ public class Player extends Mover
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() {     
-        checkMove();
+        checkMove();    
        
+        // Si on est sur de l'eau et qu'il n'y a pas de Platform, gameOver.
+        // Si il y a une plateforme, on met le joueur dessus 
+        Actor wat = getOneIntersectingObject(Water.class);
+        if(wat != null){
+            Actor plat = getOneIntersectingObject(Platform.class);
+            if(plat == null) {
+                killPlayer();
+            }
+            else { 
+                setLocation(plat.getX(),plat.getY());
+            }
+        }
+        
         // Si on est sur un véhicule, gameOver
         Actor intersectVehicle = getOneIntersectingObject(Vehicle.class);
         if(intersectVehicle != null) {
             killPlayer();
         } 
-       
-        // Si on est sur de l'eau et qu'il n'y a pas de Platform, gameOver
-        List<Water> listWat = getObjectsAtOffset(0,0,Water.class);
-        if(!listWat.isEmpty()){
-            List<Platform> listPlatform = getObjectsAtOffset(0,0,Platform.class);
-            if(listPlatform.isEmpty()) {
-                killPlayer();
-            }
-        }
-        // Si le Player rencontre un item, le prend
-        List<Reward> listReward = getObjectsAtOffset(0,0,Reward.class);
-        if(!listReward.isEmpty()){
-            for (Reward rew : listReward){
-                rew.taken();
-                ((Map)getWorld()).score.increment(5);
-                ((Map)getWorld()).removeObject(rew);
-            }
-        }
+        
         // Si on est hors du champs le joueur meurt
         int y = this.getY();
         if (y > (SIZE_MAP + CELL_SIZE/2)){
             killPlayer();
         }
+        
+        // Si le Player rencontre un item, le prend
+        Reward reward = (Reward)getOneIntersectingObject(Reward.class);
+        if(reward != null){ 
+            reward.taken();
+            ((Map)getWorld()).score.increment(5);
+            ((Map)getWorld()).removeObject(reward);            
+        }     
    
         
         walkingDelayCounter++;
@@ -109,7 +113,8 @@ public class Player extends Mover
         this.setRotation(0);
         this.setImage("skull.png");
         this.getImage().scale(IMAGE_SIZE,IMAGE_SIZE);
-
+        
+        getWorld().repaint();
         ((Map)getWorld()).gameOver();
     }
 }

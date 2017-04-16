@@ -9,8 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Log extends Platform {
     private final int IMAGE_SIZE = 50;
     
-    public Log(String direction) {
-        super(1,direction);
+    public Log(String direction,int speed) {
+        super(speed,direction);
         this.getImage().scale(IMAGE_SIZE,IMAGE_SIZE);   
         
         if(direction == "toRight") {

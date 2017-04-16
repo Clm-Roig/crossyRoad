@@ -18,4 +18,8 @@ public abstract class Background extends Actor
     public void addReward() {
         this.getWorld().addObject(new Reward(),getX(),getY());
     }
+    
+    public void addRewardOnPlatform(Platform plat) {
+        this.getWorld().addObject(new RewardOnPlatform(plat),getX(),getY());
+    }
 }
