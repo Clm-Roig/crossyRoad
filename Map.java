@@ -41,13 +41,14 @@ public class Map extends World {
      */
     
     public ScoreBoard score;
+    public Player joueur;
 
     public Map() {    
         // Create a new world and setPaintOrder
         super(SIZE_MAP, SIZE_MAP, 1,false);
         setPaintOrder(ScoreBoard.class,Item.class,Player.class,Mover.class,Rock.class,Obstacle.class,Background.class);
         
-        // On commence par une plaine sans arbre en bas
+        // On commence par deux plaines sans arbre en bas
         for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
             addObject(new Plain(),i,SIZE_MAP - (CELL_SIZE/2));
             addObject(new Plain(),i,SIZE_MAP - (3*CELL_SIZE/2));
@@ -59,8 +60,9 @@ public class Map extends World {
             this.loadRandomGround(i);
         }        
         
-        // Ajout Player et score
-        addObject(new Player(),SIZE_MAP/2,SIZE_MAP - (3*CELL_SIZE/2)) ;
+        // Ajout Player et score        
+        this.joueur = new Player();
+        addObject(joueur,SIZE_MAP/2,SIZE_MAP - (3*CELL_SIZE/2));
         
         this.score = new ScoreBoard("Score : ");
         addObject(this.score,150,CELL_SIZE/2); 
@@ -69,7 +71,18 @@ public class Map extends World {
     
     public void act() {
         cleanTrainsOut();
-        defile();
+        boolean aBougé = false;
+        int initialXPlayer = SIZE_MAP/2;
+        int initialYPlayer = SIZE_MAP - (3*CELL_SIZE/2);
+        
+        // On n'active pas le défilement tant que le joueur n'a pas bougé de sa position initiale
+        if(this.joueur.getY() != initialYPlayer || this.joueur.getX() != initialXPlayer && !aBougé) {
+            aBougé = true;
+        }  
+        
+        if(aBougé) {
+            defile();       
+        }
     }
     
     /**
@@ -84,8 +97,7 @@ public class Map extends World {
         }
     }
     
-    // Les differéntes méthodes de chargement de background
-        
+    // Les differéntes méthodes de chargement de background        
     public void loadWater(int y){
         for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
         Water wat = new Water();
@@ -101,8 +113,7 @@ public class Map extends World {
                 }
             }
         }
-    }
-    
+    }    
     
     public void loadPlain(int y){
          for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
@@ -220,9 +231,8 @@ public class Map extends World {
     
     // défilage paysage
     public void defile (){
-       
         List <Actor> listActeurs = getObjects(Actor.class);
-        int i =0;
+        int i=0;
         for(Actor act : listActeurs){
             int y = act.getY();
             int x = act.getX();
@@ -231,11 +241,11 @@ public class Map extends World {
             }
            
             // si on trouve un objet encore au dessus de la MAP 
-            if (y<CELL_SIZE/2){
-                i= i+1;
+            if (y < CELL_SIZE/2){
+                i = i+1;
             }
             //si l'objet sort de la MAP
-            if (y> SIZE_MAP + CELL_SIZE/2){
+            if (y > SIZE_MAP + CELL_SIZE/2){
                 this.removeObject(act);
             }
         }

@@ -13,7 +13,7 @@ public class Player extends Mover
     public static final int CELL_SIZE = 50;
     
     private final int IMAGE_SIZE = 40;
-    private final int WALKING_DELAY = 15;
+    private final int WALKING_DELAY = 10;
     private int walkingDelayCounter = 0;
     
     public Player() {

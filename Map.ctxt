@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Map
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Map\ here.\r\n\ \r\n\ @author\ (Jade\ HENNEBERT\ &\ Cl\u00E9ment\ ROIG)\ \r\n\ @version\ (1,0)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Map\ here.\n\ \n\ @author\ (Jade\ HENNEBERT\ &\ Cl\u00E9ment\ ROIG)\ \n\ @version\ (1,0)\n
 comment1.params=
 comment1.target=Map()
 comment10.params=
@@ -9,7 +9,7 @@ comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ cleanTrainsOut()
-comment3.text=\r\n\ Supprime\ les\ trains\ qui\ sont\ "loin"\ en\ dehors\ de\ la\ map\ pour\ \u00E9viter\ de\ surcharger\ la\ m\u00E9moire\ ind\u00E9finiment.\r\n
+comment3.text=\n\ Supprime\ les\ trains\ qui\ sont\ "loin"\ en\ dehors\ de\ la\ map\ pour\ \u00E9viter\ de\ surcharger\ la\ m\u00E9moire\ ind\u00E9finiment.\n
 comment4.params=y
 comment4.target=void\ loadWater(int)
 comment5.params=y
@@ -20,7 +20,7 @@ comment7.params=y
 comment7.target=void\ loadRail(int)
 comment8.params=y
 comment8.target=void\ loadRandomGround(int)
-comment8.text=\ \r\n\ Place\ un\ objet\ Background\ sur\ la\ carte\ selon\ l'entier\ pass\u00E9\ en\ param\u00E8tre\ sur\ la\ ligne\ y.\r\n\ \ \r\n\ 0\ <\=\ y\ <\ SIZE_MAP\r\n\ \r\n\ 0\ \=>\ water\r\n\ 1\ \=>\ plain\r\n\ 2\ \=>\ road\r\n\ 3\ \=>\ rail\r\n
+comment8.text=\ \n\ Place\ un\ objet\ Background\ sur\ la\ carte\ selon\ l'entier\ pass\u00E9\ en\ param\u00E8tre\ sur\ la\ ligne\ y.\n\ \ \n\ 0\ <\=\ y\ <\ SIZE_MAP\n\ \n\ 0\ \=>\ water\n\ 1\ \=>\ plain\n\ 2\ \=>\ road\n\ 3\ \=>\ rail\n
 comment9.params=
 comment9.target=void\ gameOver()
 numComments=11
