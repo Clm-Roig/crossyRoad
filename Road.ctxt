@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=Road
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Road\ here.\r\n\ \r\n\ @author\ Cl\u00E9ment\ ROIG\ &\ Jade\ HENNEBERT\r\n\ @version\ 1.0\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Road\ here.\n\ \n\ @author\ Cl\u00E9ment\ ROIG\ &\ Jade\ HENNEBERT\n\ @version\ 1.0\n
 comment1.params=direction
 comment1.target=Road(java.lang.String)
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Road.\r\n
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Road.\n
 comment2.params=
 comment2.target=void\ addRedCar()
 comment3.params=

@@ -35,6 +35,10 @@ public class ScoreBoard extends Actor {
         getImage().setColor(new Color(255,255,255));
         updateImage();
     }
+    
+    // GET / SET
+    public int getValue(){return this.value;}
+    public void setValue(int v){this.value = v;}
 
     /**
      * Increment the counter value by the value given.

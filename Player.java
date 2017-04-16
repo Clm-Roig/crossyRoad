@@ -33,7 +33,7 @@ public class Player extends Mover
         // Si on est sur un véhicule, gameOver
         Actor intersectVehicle = getOneIntersectingObject(Vehicle.class);
         if(intersectVehicle != null) {
-            this.killPlayer();
+            killPlayer();
         } 
        
         // Si on est sur de l'eau et qu'il n'y a pas de Platform, gameOver
@@ -110,7 +110,6 @@ public class Player extends Mover
         this.setRotation(0);
         this.setImage("skull.png");
         this.getImage().scale(IMAGE_SIZE,IMAGE_SIZE);
-        getWorld().repaint();
 
         ((Map)getWorld()).gameOver();
     }

@@ -216,10 +216,21 @@ public class Map extends World {
        }
     }
    
-    // à compléter
+    // Fin de partie
     public void gameOver() {
-        Greenfoot.stop();
-        while(!Greenfoot.isKeyDown("enter")){}       
+        // Image grise sur toute la map
+        setPaintOrder(EndScreen.class);
+        addObject(new EndScreen(),SIZE_MAP/2,SIZE_MAP/2);
+        
+        // Texte
+        showText("GAME OVER",SIZE_MAP/2,SIZE_MAP/2 - 40);
+        String scoreFinal = "Votre Score : " + this.score.getValue();
+        showText(scoreFinal,SIZE_MAP/2,SIZE_MAP/2);
+        showText("Appuyez sur Entrée pour recommencer.",SIZE_MAP/2,SIZE_MAP/2 + 40);
+        
+        repaint();
+        // Restart ? 
+        while(!Greenfoot.isKeyDown("Enter")) {}
         Greenfoot.setWorld(new Map());
         Greenfoot.start();       
     }

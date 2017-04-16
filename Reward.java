@@ -20,7 +20,7 @@ public class Reward extends Item
     
     public void act() 
     {
-        // Add your action code here.
+
     }    
     
     //animation de la prise du bonus
