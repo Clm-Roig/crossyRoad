@@ -28,7 +28,7 @@ public class Map extends World {
      * public int PROBA_RAIL = 100;     => probaWat = 100 - 85 = 15%%
      */    
     private int PROBA_WATER = 20;
-    private int PROBA_PLAIN = 40;
+    private int PROBA_PLAIN = 60;
     private int PROBA_ROAD = 80;
     private int PROBA_RAIL = 100;      
     
