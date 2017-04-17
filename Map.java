@@ -13,11 +13,11 @@ public class Map extends World {
     public static final int CELL_SIZE = 50;
     
     // Apparition proba (/100)
-    public int PROBA_CAR = 20;
-    public int PROBA_TREE = 10;   
-    public int PROBA_LOG = 30; 
-    public int PROBA_TRAIN = 100;
-    public int PROBA_COIN = 5;
+    private int PROBA_CAR = 15;
+    private int PROBA_TREE = 10;   
+    private int PROBA_LOG = 30; 
+    private int PROBA_TRAIN = 100;
+    private int PROBA_COIN = 5;
     
     /* Les probas de sol sont cumulatives et sont traités dans l'ordre suivant : 
      * water => plain => road => rail
@@ -27,15 +27,17 @@ public class Map extends World {
      * public int PROBA_ROAD = 85;      => probaWat = 85 - 75 = 10%
      * public int PROBA_RAIL = 100;     => probaWat = 100 - 85 = 15%%
      */    
-    public int PROBA_WATER = 25;
-    public int PROBA_PLAIN = 50;
-    public int PROBA_ROAD = 75;
-    public int PROBA_RAIL = 100;      
+    private int PROBA_WATER = 25;
+    private int PROBA_PLAIN = 50;
+    private int PROBA_ROAD = 75;
+    private int PROBA_RAIL = 100;      
     
     // Misc
     public final int TRAIN_LIMIT_X = 2000; 
     public final int INIT_POSITION_PLAYER_X = SIZE_MAP/2;
     public final int INIT_POSITION_PLAYER_Y = SIZE_MAP - (3*CELL_SIZE/2);
+    
+    private boolean aBougé = false;
 
     /**
      * Constructor for objects of class Map.
@@ -72,14 +74,13 @@ public class Map extends World {
     
     public void act() {
         cleanTrainsOut();
-        boolean aBougé = false;
         
         // On n'active pas le défilement tant que le joueur n'a pas bougé de sa position initiale
-        if(this.joueur.getY() != INIT_POSITION_PLAYER_Y || this.joueur.getX() != INIT_POSITION_PLAYER_X && !aBougé) {
-            aBougé = true;
+        if(this.joueur.getY() != INIT_POSITION_PLAYER_Y || this.joueur.getX() != INIT_POSITION_PLAYER_X && !this.aBougé) {
+            this.aBougé = true;
         }  
         
-        if(aBougé) {
+        if(this.aBougé) {
             defile();       
         }
     }
@@ -110,9 +111,6 @@ public class Map extends World {
         int speed = Greenfoot.getRandomNumber(3) + 1;
         
         for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
-            
-            
-            
             Water wat = new Water(direction,speed);
             addObject(wat,i,y);           
                 
@@ -133,7 +131,7 @@ public class Map extends World {
                Plain pl = new Plain();
                addObject(pl,i,y);       
                
-               // Tree ?
+               // Tree or Coin ?
                int isTree = Greenfoot.getRandomNumber(100);
                int isCoin = Greenfoot.getRandomNumber(100);
                if(isTree < PROBA_TREE) {
@@ -141,7 +139,7 @@ public class Map extends World {
                }
                else if(isCoin < PROBA_COIN){
                    pl.addCoin();
-                }
+               }
         }
     }
     
@@ -168,6 +166,12 @@ public class Map extends World {
                if(colorCar == 1) road.addGreenCar();
                if(colorCar == 2) road.addBlueCar();
            }
+           
+           // Coin ? 
+           int isCoin = Greenfoot.getRandomNumber(100);
+           if(isCoin < PROBA_COIN){
+               road.addCoin();
+            }
         }
         
     }
@@ -185,7 +189,13 @@ public class Map extends World {
                 // On complète la ligne entière           
                 for(int i=CELL_SIZE/2; i<SIZE_MAP - CELL_SIZE/2 ; i = i+CELL_SIZE) { 
                     Rail rail = new Rail(direction);
-                    addObject(rail,i,y);              
+                    addObject(rail,i,y); 
+                    
+                    // Coin ? 
+                    int isCoin = Greenfoot.getRandomNumber(100);
+                    if(isCoin < PROBA_COIN){
+                        rail.addCoin();
+                    }
                 } 
            }
            else {
@@ -198,9 +208,15 @@ public class Map extends World {
                 // On complète la ligne entière           
                 for(int i=(CELL_SIZE*3)/2; i<SIZE_MAP ; i = i+CELL_SIZE) { 
                     Rail rail = new Rail(direction);
-                    addObject(rail,i,y);              
+                    addObject(rail,i,y);    
+                    
+                    // Coin ? 
+                    int isCoin = Greenfoot.getRandomNumber(100);
+                    if(isCoin < PROBA_COIN){
+                        rail.addCoin();
+                    }
                 } 
-           }         
+           }               
        }
     
     /** 
@@ -245,6 +261,7 @@ public class Map extends World {
         repaint();
         // Restart ? 
         while(!Greenfoot.isKeyDown("Enter")) {}
+        this.removeObjects(getObjects(Coin.class));        
         Greenfoot.setWorld(new Map());
         Greenfoot.start();       
     }
@@ -271,8 +288,8 @@ public class Map extends World {
         }
         // si on a pas trouvé d'objet au dessus de la MAP : regénérer une ligne 
         if (i==0){
-                loadRandomGround(-(CELL_SIZE/2)+1);
-            }
+            loadRandomGround(-(CELL_SIZE/2)+1);
+        }
        
     }
 }

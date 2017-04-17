@@ -112,8 +112,14 @@ public class Player extends Mover
     public boolean moveLeft() {
         boolean itMoved = super.moveLeft();
         if(itMoved) {
-            Background bg = (Background) getOneObjectAtOffset(0,0,Background.class);
-            setLocation(bg.getX(),bg.getY());
+            Platform plat = (Platform) getOneObjectAtOffset(0,0,Platform.class);
+            if(plat != null) {
+                setLocation(plat.getX(),plat.getY());
+            }
+            else {
+                Background bg = (Background) getOneObjectAtOffset(0,0,Background.class);
+                setLocation(bg.getX(),bg.getY());
+            }
         }
         return itMoved;    
     }
@@ -122,8 +128,14 @@ public class Player extends Mover
     public boolean moveRight() {
         boolean itMoved = super.moveRight();
         if(itMoved) {
-            Background bg = (Background) getOneObjectAtOffset(0,0,Background.class);
-            setLocation(bg.getX(),bg.getY());
+            Platform plat = (Platform) getOneObjectAtOffset(0,0,Platform.class);
+            if(plat != null) {
+                setLocation(plat.getX(),plat.getY());
+            }
+            else {
+                Background bg = (Background) getOneObjectAtOffset(0,0,Background.class);
+                setLocation(bg.getX(),bg.getY());
+            }
         }
        
         return itMoved;         
@@ -133,21 +145,34 @@ public class Player extends Mover
     public boolean moveUp() {
         boolean itMoved = super.moveUp();
         if(itMoved) {
-            Background bg = (Background) getOneObjectAtOffset(0,0,Background.class);
-            setLocation(bg.getX(),bg.getY());
+            Platform plat = (Platform) getOneObjectAtOffset(0,0,Platform.class);
+            if(plat != null) {
+                setLocation(plat.getX(),plat.getY());
+            }
+            else {
+                Background bg = (Background) getOneObjectAtOffset(0,0,Background.class);
+                setLocation(bg.getX(),bg.getY());
+            }            
         }
         return itMoved;     
     }
     
-    // 90° pour aller vers le bas
-    public boolean moveDown() {
+    // 90° pour aller vers le bas (seulement pour les tests)
+    /* public boolean moveDown() {
         boolean itMoved = super.moveDown();
         if(itMoved) {
-            Background bg = (Background) getOneObjectAtOffset(0,0,Background.class);
-            setLocation(bg.getX(),bg.getY());
+            Platform plat = (Platform) getOneObjectAtOffset(0,0,Platform.class);
+            if(plat != null) {
+                setLocation(plat.getX(),plat.getY());
+            }
+            else {
+                Background bg = (Background) getOneObjectAtOffset(0,0,Background.class);
+                setLocation(bg.getX(),bg.getY());
+            }
        }
         return itMoved; 
    }
+   */
     
     public void killPlayer() {        
         // Apparition d'un crane

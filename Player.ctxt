@@ -15,7 +15,6 @@ comment5.target=boolean\ moveRight()
 comment6.params=
 comment6.target=boolean\ moveUp()
 comment7.params=
-comment7.target=boolean\ moveDown()
-comment8.params=
-comment8.target=void\ killPlayer()
-numComments=9
+comment7.target=void\ killPlayer()
+comment7.text=\ public\ boolean\ moveDown()\ {\n\ \ \ \ \ \ \ \ boolean\ itMoved\ \=\ super.moveDown();\n\ \ \ \ \ \ \ \ if(itMoved)\ {\n\ \ \ \ \ \ \ \ \ \ \ \ Platform\ plat\ \=\ (Platform)\ getOneObjectAtOffset(0,0,Platform.class);\n\ \ \ \ \ \ \ \ \ \ \ \ if(plat\ \!\=\ null)\ {\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ setLocation(plat.getX(),plat.getY());\n\ \ \ \ \ \ \ \ \ \ \ \ }\n\ \ \ \ \ \ \ \ \ \ \ \ else\ {\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Background\ bg\ \=\ (Background)\ getOneObjectAtOffset(0,0,Background.class);\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ setLocation(bg.getX(),bg.getY());\n\ \ \ \ \ \ \ \ \ \ \ \ }\n\ \ \ \ \ \ \ }\n\ \ \ \ \ \ \ \ return\ itMoved;\ \n\ \ \ }\n
+numComments=8
