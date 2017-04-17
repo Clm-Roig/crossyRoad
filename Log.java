@@ -11,7 +11,11 @@ public class Log extends Platform {
     
     public Log(String direction,int speed) {
         super(speed,direction);
-        this.getImage().scale(IMAGE_SIZE,IMAGE_SIZE);   
+        
+        // TODO : à arranger (nouvelle image ?) surtout le + 10
+        float ratioHW = (float) getImage().getHeight()/getImage().getWidth();
+        float newHeight = IMAGE_SIZE * ratioHW + 10;
+        this.getImage().scale(IMAGE_SIZE,(int)newHeight);      
         
         if(direction == "toRight") {
             setRotation(0);
