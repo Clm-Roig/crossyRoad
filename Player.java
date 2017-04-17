@@ -125,6 +125,7 @@ public class Player extends Mover
             Background bg = (Background) getOneObjectAtOffset(0,0,Background.class);
             setLocation(bg.getX(),bg.getY());
         }
+       
         return itMoved;         
     }
     
@@ -144,7 +145,7 @@ public class Player extends Mover
         if(itMoved) {
             Background bg = (Background) getOneObjectAtOffset(0,0,Background.class);
             setLocation(bg.getX(),bg.getY());
-        }
+       }
         return itMoved; 
    }
     
