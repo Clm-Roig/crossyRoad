@@ -25,38 +25,50 @@ public abstract class Mover extends Actor {
     }    
     
     // 180° pour aller vers la gauche
-    public void moveLeft() {
+    public boolean moveLeft() {
+        boolean itMoved = false;
         setRotation(180);
         Obstacle obst = (Obstacle) getOneObjectAtOffset(-this.speed,0,Obstacle.class);
         if(obst == null) {
             move(this.speed);
+            itMoved = true;
         }
+        return itMoved;
     }
     
     // 0° pour aller vers la droite
-    public void moveRight() {
+    public boolean moveRight() {
+        boolean itMoved = false;
         setRotation(0);
         Obstacle obst = (Obstacle) getOneObjectAtOffset(this.speed,0,Obstacle.class);
         if(obst == null) {
             move(this.speed);   
-        }        
+            itMoved = true;
+        }      
+        return itMoved;
     }
     
     // 270° pour aller vers le haut
-    public void moveUp() {
+    public boolean moveUp() {
+        boolean itMoved = false;
         setRotation(270);
         Obstacle obst = (Obstacle) getOneObjectAtOffset(0,-this.speed,Obstacle.class);
         if(obst == null) {
             move(this.speed);
+            itMoved = true;
         }
+        return itMoved;
     }
     
     // 90° pour aller vers le haut
-    public void moveDown() {
+    public boolean moveDown() {
+        boolean itMoved = false;
         setRotation(90);
         Obstacle obst = (Obstacle) getOneObjectAtOffset(0,this.speed,Obstacle.class);
         if(obst == null) {
             move(this.speed);
+            itMoved = true;
         }
+        return itMoved;
    }
 }

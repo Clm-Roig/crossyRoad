@@ -109,47 +109,43 @@ public class Player extends Mover
     
     
     // Ré-implémentation des fonctions de déplacement (cas des plateformes qui ne laisse pas le joueur nécessairement en face d'une cellule)
-    public void moveLeft() {
-        setRotation(180);
-        Obstacle obst = (Obstacle) getOneObjectAtOffset(-this.speed,0,Obstacle.class);
-        if(obst == null) {
-            Background bg = (Background) getOneObjectAtOffset(-this.speed,0,Background.class);
-            move(this.speed);
+    public boolean moveLeft() {
+        boolean itMoved = super.moveLeft();
+        if(itMoved) {
+            Background bg = (Background) getOneObjectAtOffset(0,0,Background.class);
             setLocation(bg.getX(),bg.getY());
         }
+        return itMoved;    
     }
     
     // 0° pour aller vers la droite
-    public void moveRight() {
-        setRotation(0);
-        Obstacle obst = (Obstacle) getOneObjectAtOffset(this.speed,0,Obstacle.class);
-        if(obst == null) {
-            Background bg = (Background) getOneObjectAtOffset(+this.speed,0,Background.class);
-            move(this.speed);
+    public boolean moveRight() {
+        boolean itMoved = super.moveRight();
+        if(itMoved) {
+            Background bg = (Background) getOneObjectAtOffset(0,0,Background.class);
             setLocation(bg.getX(),bg.getY());
-        }        
+        }
+        return itMoved;         
     }
     
     // 270° pour aller vers le haut
-    public void moveUp() {
-        setRotation(270);
-        Obstacle obst = (Obstacle) getOneObjectAtOffset(0,-this.speed,Obstacle.class);
-        if(obst == null) {
-            Background bg = (Background) getOneObjectAtOffset(0,-this.speed,Background.class);
-            move(this.speed);
+    public boolean moveUp() {
+        boolean itMoved = super.moveUp();
+        if(itMoved) {
+            Background bg = (Background) getOneObjectAtOffset(0,0,Background.class);
             setLocation(bg.getX(),bg.getY());
         }
+        return itMoved;     
     }
     
     // 90° pour aller vers le bas
-    public void moveDown() {
-        setRotation(90);
-        Obstacle obst = (Obstacle) getOneObjectAtOffset(0,this.speed,Obstacle.class);
-        if(obst == null) {
-            Background bg = (Background) getOneObjectAtOffset(0,+this.speed,Background.class);
-            move(this.speed);
+    public boolean moveDown() {
+        boolean itMoved = super.moveDown();
+        if(itMoved) {
+            Background bg = (Background) getOneObjectAtOffset(0,0,Background.class);
             setLocation(bg.getX(),bg.getY());
         }
+        return itMoved; 
    }
     
     public void killPlayer() {        
