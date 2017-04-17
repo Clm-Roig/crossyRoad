@@ -157,6 +157,9 @@ public class Player extends Mover
         return itMoved;     
     }
     
+    public boolean moveDown() {
+        return false;
+    }
     // 90° pour aller vers le bas (seulement pour les tests)
     /* public boolean moveDown() {
         boolean itMoved = super.moveDown();
