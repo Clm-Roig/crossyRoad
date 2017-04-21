@@ -14,7 +14,7 @@ Vous mourrez quand :
 
 Quand vous mourrez, votre score s'affiche et vous pouvez recommencer une partie en appuyant sur "Entrée". 
 
-REMARQUE : Il est possible d'ajuster la possibilité du jeu en diniminuant la "Speed" dans l'interface Greenfoot. 
+REMARQUE : Il est possible d'ajuster la difficulté du jeu en diniminuant la "Speed" dans l'interface Greenfoot. 
 
 ---------------------------------------------------------------
 AMÉLIORATIONS À VENIR 
@@ -23,7 +23,3 @@ AMÉLIORATIONS À VENIR
 - Affichage des meilleurs scores de la session en cours 
 - Ajout d'items pouvant intéragir avec le monde 
 - Augmentation de la difficulté au fur et à mesure de l'avancée dans la carte
-
-
-
-
