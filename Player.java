@@ -2,7 +2,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 
 /**
- * Write a description of class Player here.
  * 
  * @author (Jade HENNEBERT & Clément ROIG) 
  * @version (1,0))

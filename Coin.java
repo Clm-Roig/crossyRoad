@@ -1,19 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Reward here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jade HENNEBERT & Clément ROIG
+ * @version 1,0
  */
 public class Coin extends Item {
     public Coin() {
         super();  
-    }
-        
-    public void act() {
- 
-    }        
+    }      
     
     // Animation de la prise de Reward
     public void taken(){        

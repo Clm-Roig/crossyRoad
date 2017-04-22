@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=ScoreBoard
-comment0.text=\n\ ScoreBoard\ that\ displays\ some\ taxt\ and\ a\ number.\n\ \n\ @author\ Jade\ HENNEBERT\ &\ Cl\u00E9ment\ ROIG\n\ @version\ 1.0\n
+comment0.text=\n\ ScoreBoard\ displays\ some\ text\ and\ a\ number.\n\ \n\ @author\ Jade\ HENNEBERT\ &\ Cl\u00E9ment\ ROIG\n\ @version\ 1.0\n
 comment1.params=
 comment1.target=ScoreBoard()
 comment1.text=\n\ Create\ a\ ScoreBoard\ without\ a\ text\ prefix,\ initialized\ to\ zero.\n

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=EndScreen
-comment0.text=\n\ Write\ a\ description\ of\ class\ endScreen\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Screen\ at\ the\ end\ of\ a\ game\ (just\ a\ gray\ image\ on\ the\ map)\n\ \n\ @author\ Jade\ HENNEBERT\ &\ Cl\u00E9ment\ ROIG\n\ @version\ 1,0\n
 comment1.params=
 comment1.target=EndScreen()
 numComments=2

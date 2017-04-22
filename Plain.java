@@ -1,18 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Plain here.
+ * Plains can have Tree on it.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jade HENNEBERT & Clément ROIG
+ * @version 1,0
  */
-public class Plain extends Background
-{
-
-    /**
-     * Constructor for objects of class Plain.
-     * 
-     */
+public class Plain extends Background {
     public Plain() {
         super();
     }
@@ -20,10 +14,4 @@ public class Plain extends Background
     public void addTree() {
         getWorld().addObject(new Tree(),getX(),getY());        
     }
-    
-    public void loadVehicle(){}
-    
-    /*public void addReward() {
-        getWorld().addObject(new Reward(),getX(),getY());
-    }*/
 }

@@ -1,10 +1,8 @@
 #BlueJ class context
 comment0.target=CoinOnPlatform
-comment0.text=\n\ Write\ a\ description\ of\ class\ RewardOnPlatform\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=
-comment1.target=CoinOnPlatform()
-comment2.params=plat
-comment2.target=CoinOnPlatform(Platform)
-comment3.params=
-comment3.target=void\ act()
-numComments=4
+comment0.text=\n\ @author\ Jade\ HENNEBERT\ &\ Cl\u00E9ment\ ROIG\n\ @version\ 1,0\n
+comment1.params=plat
+comment1.target=CoinOnPlatform(Platform)
+comment2.params=
+comment2.target=void\ act()
+numComments=3

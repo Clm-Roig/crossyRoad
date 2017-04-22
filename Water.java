@@ -1,18 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Water here.
+ * Water can have Platform on it.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jade HENNEBERT & Clément ROIG
+ * @version 1,0
  */
-public class Water extends Background
-{
+public class Water extends Background {
     private String direction;  
     private int speed;
-    /**
-     * Constructor for objects of class Water.
-     */
+    
     public Water(String direction, int speed){
         super();
         this.direction = direction;

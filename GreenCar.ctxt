@@ -1,9 +1,8 @@
 #BlueJ class context
 comment0.target=GreenCar
-comment0.text=\n\ Write\ a\ description\ of\ class\ YellowCar\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ @author\ Jade\ HENNEBERT\ &\ Cl\u00E9ment\ ROIG\n\ @version\ 1,0\n
 comment1.params=direction
 comment1.target=GreenCar(java.lang.String)
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\n\ Act\ -\ do\ whatever\ the\ YellowCar\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
 numComments=3

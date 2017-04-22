@@ -1,7 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * 
  * @author Jade HENNEBERT & Clément ROIG
  * @version 1.0
  */
@@ -90,8 +89,7 @@ public class RailWithSignal extends Rail {
     
     /**
      * Supprime le référencement du train dans le rail si celui-ci est déjà passé
-     */
-    
+     */    
     private void checkForDeleteTrain() {
         // Le train vient de gauche
         if(this.train != null) {

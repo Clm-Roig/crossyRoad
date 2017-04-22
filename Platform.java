@@ -1,10 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Platform here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jade HENNEBERT & Clément ROIG
+ * @version 1,0
  */
 public abstract class Platform extends Mover {
     private String direction; 
@@ -17,13 +15,4 @@ public abstract class Platform extends Mover {
     // GET / SET 
     public String getDirection() {return this.direction;}
     public void setDirection(String dir) {this.direction = dir;}
-    
-    /**
-     * Act - do whatever the Platform wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        // Add your action code here.
-    }    
 }

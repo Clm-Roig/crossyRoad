@@ -1,13 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Train here.
  * 
  * @author (Jade HENNEBERT & Clément ROIG) 
  * @version (1,0)
  */
-public class Train extends Vehicle
-{    
+public class Train extends Vehicle {
     public Train(String direction) {
         super(direction,12);     
         this.getImage().scale(getImage().getWidth(), 35);    

@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Rail here.
+ * Rail has Train on it.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jade HENNEBERT & Clément ROIG
+ * @version 1,0
  */
 public class Rail extends Background
 {
@@ -18,10 +18,5 @@ public class Rail extends Background
         this.direction = direction;        
     }
     
-    public String getDirection() {return this.direction;}
-    
-    public void act() {            
-        
-    }
-    
+    public String getDirection() {return this.direction;}   
 }

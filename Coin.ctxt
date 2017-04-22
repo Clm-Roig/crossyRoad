@@ -1,10 +1,8 @@
 #BlueJ class context
 comment0.target=Coin
-comment0.text=\n\ Write\ a\ description\ of\ class\ Reward\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ @author\ Jade\ HENNEBERT\ &\ Cl\u00E9ment\ ROIG\n\ @version\ 1,0\n
 comment1.params=
 comment1.target=Coin()
 comment2.params=
-comment2.target=void\ act()
-comment3.params=
-comment3.target=void\ taken()
-numComments=4
+comment2.target=void\ taken()
+numComments=3

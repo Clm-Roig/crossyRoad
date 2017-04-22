@@ -1,16 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class RewardOnPlatform here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jade HENNEBERT & Clément ROIG
+ * @version 1,0
  */
 public class CoinOnPlatform extends Coin
 {
     Platform plat;
-    
-    public CoinOnPlatform() {}
     
     public CoinOnPlatform(Platform plat) {
         super();

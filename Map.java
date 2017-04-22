@@ -12,7 +12,7 @@ public class Map extends World {
     
     // Apparition proba (/100)
     // Elements
-    private int PROBA_CAR = 10;
+    private int PROBA_CAR = 1;
     private int PROBA_TREE = 10;   
     private int PROBA_LOG = 30; 
     private int PROBA_TRAIN = 100;
@@ -38,18 +38,14 @@ public class Map extends World {
     private final int INIT_POSITION_PLAYER_Y = SIZE_MAP - (3*CELL_SIZE/2);
     
     private boolean aBougé = false;
-
-    /**
-     * Constructor for objects of class Map.
-     */
     
     public ScoreBoard score;
-    public Player joueur;
+    private Player joueur;
 
     public Map() {    
         // Create a new world and setPaintOrder
         super(SIZE_MAP, SIZE_MAP, 1,false);
-        setPaintOrder(ScoreBoard.class,Item.class,Player.class,Mover.class,Rock.class,Obstacle.class,Background.class);
+        setPaintOrder(ScoreBoard.class,Item.class,Player.class,Mover.class,Obstacle.class,Background.class);
         
         // On commence par deux plaines sans arbre en bas
         for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {

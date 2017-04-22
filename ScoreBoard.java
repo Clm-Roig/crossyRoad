@@ -1,7 +1,7 @@
  import greenfoot.*;
 
 /**
- * ScoreBoard that displays some taxt and a number.
+ * ScoreBoard displays some text and a number.
  * 
  * @author Jade HENNEBERT & Clément ROIG
  * @version 1.0
