@@ -25,16 +25,14 @@ public class Car extends Vehicle {
     
     public void act() {
         if(getDirection() == "toLeft") {
-            moveLeft();
-            
+            moveLeft();            
             if(isAtEdge()) {
                 setLocation(this.getWorld().getWidth()-1,getY());
             }
         }
         
         if(getDirection() == "toRight") {
-            moveRight();
-            
+            moveRight();            
             if(isAtEdge()) {
                 setLocation(1,getY());
             }

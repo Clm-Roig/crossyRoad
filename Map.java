@@ -43,11 +43,10 @@ public class Map extends World {
     private Player joueur;
 
     public Map() {    
-        // Create a new world and setPaintOrder
         super(SIZE_MAP, SIZE_MAP, 1,false);
         setPaintOrder(ScoreBoard.class,Item.class,Player.class,Mover.class,Obstacle.class,Background.class);
         
-        // On commence par deux plaines sans arbre en bas
+        // On commence par deux lignes de plaines sans arbre en bas
         for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
             addObject(new Plain(),i,SIZE_MAP - (CELL_SIZE/2));
             addObject(new Plain(),i,SIZE_MAP - (3*CELL_SIZE/2));
@@ -64,8 +63,7 @@ public class Map extends World {
         addObject(joueur,INIT_POSITION_PLAYER_X,INIT_POSITION_PLAYER_Y);
         
         this.score = new ScoreBoard("Score : ");
-        addObject(this.score,150,CELL_SIZE/2); 
-              
+        addObject(this.score,150,CELL_SIZE/2);               
     }
     
     public void act() {

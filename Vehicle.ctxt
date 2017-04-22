@@ -5,6 +5,4 @@ comment1.params=direction\ speed
 comment1.target=Vehicle(java.lang.String,\ int)
 comment2.params=
 comment2.target=java.lang.String\ getDirection()
-comment3.params=
-comment3.target=void\ act()
-numComments=4
+numComments=3

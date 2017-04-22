@@ -17,8 +17,4 @@ public abstract class Vehicle extends Mover
     
     // GET / SET
     public String getDirection() {return this.direction;}
- 
-    public void act() {
-        
-    }    
 }

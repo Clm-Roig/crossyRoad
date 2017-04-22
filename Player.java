@@ -6,8 +6,7 @@ import java.util.List;
  * @author (Jade HENNEBERT & Clément ROIG) 
  * @version (1,0))
  */
-public class Player extends Mover
-{
+public class Player extends Mover {
     public static final int SIZE_MAP = 550;
     public static final int CELL_SIZE = 50;
     
@@ -107,7 +106,7 @@ public class Player extends Mover
     }
     
     
-    // Ré-implémentation des fonctions de déplacement (cas des plateformes qui ne laisse pas le joueur nécessairement en face d'une cellule)
+    // Redéfinition des fonctions de déplacement (cas des plateformes qui ne laisse pas le joueur nécessairement en face d'une cellule)
     public boolean moveLeft() {
         boolean itMoved = super.moveLeft();
         if(itMoved) {
@@ -123,7 +122,6 @@ public class Player extends Mover
         return itMoved;    
     }
     
-    // 0° pour aller vers la droite
     public boolean moveRight() {
         boolean itMoved = super.moveRight();
         if(itMoved) {
@@ -140,7 +138,6 @@ public class Player extends Mover
         return itMoved;         
     }
     
-    // 270° pour aller vers le haut
     public boolean moveUp() {
         boolean itMoved = super.moveUp();
         if(itMoved) {
@@ -159,8 +156,9 @@ public class Player extends Mover
     public boolean moveDown() {
         return false;
     }
-    // 90° pour aller vers le bas (seulement pour les tests)
-    /* public boolean moveDown() {
+    
+    /* Seulement pour les tests
+    public boolean moveDown() {
         boolean itMoved = super.moveDown();
         if(itMoved) {
             Platform plat = (Platform) getOneObjectAtOffset(0,0,Platform.class);
@@ -173,9 +171,8 @@ public class Player extends Mover
             }
        }
         return itMoved; 
-   }
-   */
-    
+    }*/ 
+  
     public void killPlayer() {        
         // Apparition d'un crane
         this.setRotation(0);
