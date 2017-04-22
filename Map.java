@@ -12,7 +12,7 @@ public class Map extends World {
     
     // Apparition proba (/100)
     // Elements
-    private int PROBA_CAR = 1;
+    private int PROBA_CAR = 10;
     private int PROBA_TREE = 10;   
     private int PROBA_LOG = 30; 
     private int PROBA_TRAIN = 100;
