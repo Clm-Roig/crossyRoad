@@ -2,8 +2,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 
 /**
- * Write a description of class Map here.
- * 
  * @author (Jade HENNEBERT & Clément ROIG) 
  * @version (1,0)
  */    
@@ -13,19 +11,21 @@ public class Map extends World {
     public static final int CELL_SIZE = 50;
     
     // Apparition proba (/100)
+    // Elements
     private int PROBA_CAR = 15;
     private int PROBA_TREE = 10;   
     private int PROBA_LOG = 30; 
     private int PROBA_TRAIN = 100;
     private int PROBA_COIN = 5;
     
+    // Background
     /* Les probas de sol sont cumulatives et sont traités dans l'ordre suivant : 
      * water => plain => road => rail
      * EXEMPLE
-     * public int PROBA_WATER = 15;     => probaWat = 15-0 = 15%
-     * public int PROBA_PLAIN = 75;     => probaPla = 75-15 = 60%
-     * public int PROBA_ROAD = 85;      => probaWat = 85 - 75 = 10%
-     * public int PROBA_RAIL = 100;     => probaWat = 100 - 85 = 15%%
+     * public int PROBA_WATER = 20;     => probaWat = 20 - 0 = 20%
+     * public int PROBA_PLAIN = 60;     => probaPla = 60 - 20 = 40%
+     * public int PROBA_ROAD = 80;      => probaWat = 80 - 60 = 20%
+     * public int PROBA_RAIL = 100;     => probaWat = 100 - 80 = 20%
      */    
     private int PROBA_WATER = 20;
     private int PROBA_PLAIN = 60;
@@ -33,9 +33,9 @@ public class Map extends World {
     private int PROBA_RAIL = 100;      
     
     // Misc
-    public final int TRAIN_LIMIT_X = 2000; 
-    public final int INIT_POSITION_PLAYER_X = SIZE_MAP/2;
-    public final int INIT_POSITION_PLAYER_Y = SIZE_MAP - (3*CELL_SIZE/2);
+    private final int TRAIN_LIMIT_X = 2000; 
+    private final int INIT_POSITION_PLAYER_X = SIZE_MAP/2;
+    private final int INIT_POSITION_PLAYER_Y = SIZE_MAP - (3*CELL_SIZE/2);
     
     private boolean aBougé = false;
 
@@ -75,14 +75,14 @@ public class Map extends World {
     public void act() {
         cleanTrainsOut();
         
-        // On n'active pas le défilement tant que le joueur n'a pas bougé de sa position initiale
-        if(this.joueur.getY() != INIT_POSITION_PLAYER_Y || this.joueur.getX() != INIT_POSITION_PLAYER_X && !this.aBougé) {
-            this.aBougé = true;
-        }  
-        
+        // On n'active pas le défilement tant que le joueur n'a pas bougé de sa position initiale        
         if(this.aBougé) {
             defile();       
         }
+        
+        if(this.joueur.getY() != INIT_POSITION_PLAYER_Y || this.joueur.getX() != INIT_POSITION_PLAYER_X && !this.aBougé) {
+            this.aBougé = true;
+        }         
     }
     
     /**
@@ -107,23 +107,31 @@ public class Map extends World {
             direction = "toRight";
         }  
         
-        // Speed sur l'eau (entre 1 et 3)
-        int speed = Greenfoot.getRandomNumber(3) + 1;
+        int waterSpeed = Greenfoot.getRandomNumber(3) + 1;
+        boolean atLeast1Log = false;        
         
         for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
-            Water wat = new Water(direction,speed);
+            Water wat = new Water(direction,waterSpeed);
             addObject(wat,i,y);           
                 
             // Log ?
             int isLog = Greenfoot.getRandomNumber(100);
-                if(isLog < PROBA_LOG) {
-                   Platform log = wat.addLog(CELL_SIZE);
-                   int isCoin = Greenfoot.getRandomNumber(100);
-                   if(isCoin < PROBA_COIN){
-                       wat.addCoinOnPlatform(log);
-                    }
+            if(isLog < PROBA_LOG) {
+               Platform log = wat.addLog(CELL_SIZE);
+               atLeast1Log = true;
+               
+               // Coin ? 
+               int isCoin = Greenfoot.getRandomNumber(100);
+               if(isCoin < PROBA_COIN){
+                   wat.addCoinOnPlatform(log);
                 }
             }
+             
+            // Ajout d'une plateforme à la fin si jamais il n'y en a pas eu auparavant
+            if(!atLeast1Log && i == SIZE_MAP - CELL_SIZE/2) {
+                Platform log = wat.addLog(CELL_SIZE);
+            }
+        }
     }    
     
     public void loadPlain(int y){
