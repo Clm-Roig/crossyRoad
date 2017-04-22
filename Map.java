@@ -185,9 +185,8 @@ public class Map extends World {
     }
     
     public void loadRail(int y){
-           // Direction
-           String direction;
-           if(Greenfoot.getRandomNumber(2)==0) {
+            String direction;            
+            if(Greenfoot.getRandomNumber(2)==0) {
                 direction = "toLeft";
                 
                 // On place le railWithSignal à droite
@@ -205,8 +204,8 @@ public class Map extends World {
                         rail.addCoin();
                     }
                 } 
-           }
-           else {
+            }
+            else {
                 direction = "toRight";
                 
                 // On place le railWithSignal à gauche
@@ -224,8 +223,8 @@ public class Map extends World {
                         rail.addCoin();
                     }
                 } 
-           }               
-       }
+            }               
+        }
     
     /** 
      * Place un objet Background sur la carte selon l'entier passé en paramètre sur la ligne y.
@@ -277,7 +276,7 @@ public class Map extends World {
     // Défilage Map
     public void defile (){
         List <Actor> listActeurs = getObjects(Actor.class);
-        int i=0;
+        boolean actorAboveMap = false;
         for(Actor act : listActeurs){
             int y = act.getY();
             int x = act.getX();
@@ -285,17 +284,16 @@ public class Map extends World {
                 act.setLocation(x, y+1);
             }
            
-            // si on trouve un objet encore au dessus de la MAP 
-            if (y < CELL_SIZE/2){
-                i = i+1;
-            }
-            //si l'objet sort de la MAP
+            // Test Actor Above Map
+            actorAboveMap = y < CELL_SIZE/2;
+           
+            // Actor below Map
             if (y > SIZE_MAP + CELL_SIZE/2){
                 this.removeObject(act);
             }
         }
-        // si on a pas trouvé d'objet au dessus de la MAP : regénérer une ligne 
-        if (i==0){
+        // No Actor above ? New line
+        if (!actorAboveMap){
             loadRandomGround(-(CELL_SIZE/2)+1);
         }
        
