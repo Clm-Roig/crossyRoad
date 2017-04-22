@@ -21,6 +21,7 @@ public class Water extends Background
     
     // GET / SET
     public String getDirection() {return this.direction;}
+    public int getSpeed() {return this.speed;}
     
     public Log addLog(int cell_size) {
         Log log = new Log(this.direction, this.speed);

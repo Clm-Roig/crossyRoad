@@ -106,8 +106,20 @@ public class Map extends World {
         else {
             direction = "toRight";
         }  
+                
+        // 2 lignes d'eau consécutives ne peuvent avoir la meme vitesse
+        int waterSpeed;
+        List<Water> listWater = getObjectsAt(SIZE_MAP/2,y+CELL_SIZE,Water.class);
+        if(!listWater.isEmpty()) {
+            waterSpeed = listWater.get(0).getSpeed();
+            while(waterSpeed == listWater.get(0).getSpeed()) {
+                waterSpeed = Greenfoot.getRandomNumber(3) + 1;
+            }       
+        }
+        else {
+            waterSpeed = Greenfoot.getRandomNumber(3) + 1;
+        }
         
-        int waterSpeed = Greenfoot.getRandomNumber(3) + 1;
         boolean atLeast1Log = false;        
         
         for(int i=CELL_SIZE/2; i<SIZE_MAP ; i = i+CELL_SIZE) {
