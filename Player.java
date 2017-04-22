@@ -75,14 +75,14 @@ public class Player extends Mover {
                 }
             }
             
-            if(Greenfoot.isKeyDown("right")) {
+            else if(Greenfoot.isKeyDown("right")) {
                 if(getX() + this.speed < ((Map)getWorld()).SIZE_MAP) {
                     moveRight();
                     heMoved = true;
                 }
             }
             
-            if(Greenfoot.isKeyDown("left")){
+            else if(Greenfoot.isKeyDown("left")){
                 if(getX() - this.speed > 0) {
                     moveLeft();  
                     heMoved = true;
@@ -90,7 +90,7 @@ public class Player extends Mover {
             }
            
             // Juste pour les tests, on autorise le déplacement vers le bas
-            if(Greenfoot.isKeyDown("down")){
+            else if(Greenfoot.isKeyDown("down")){
                 if(getY() + this.speed < ((Map)getWorld()).SIZE_MAP) {
                     moveDown();  
                     heMoved = true;
