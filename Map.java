@@ -276,7 +276,7 @@ public class Map extends World {
     // Défilage Map
     public void defile (){
         List <Actor> listActeurs = getObjects(Actor.class);
-        boolean actorAboveMap = false;
+        boolean actorDessusMap = false;
         for(Actor act : listActeurs){
             int y = act.getY();
             int x = act.getX();
@@ -284,16 +284,17 @@ public class Map extends World {
                 act.setLocation(x, y+1);
             }
            
-            // Test Actor Above Map
-            actorAboveMap = y < CELL_SIZE/2;
+            // Actor au-dessus de la map ?
+            actorDessusMap = actorDessusMap || (y < CELL_SIZE/2);
            
-            // Actor below Map
+            // Actor sous la map ?
             if (y > SIZE_MAP + CELL_SIZE/2){
                 this.removeObject(act);
             }
         }
-        // No Actor above ? New line
-        if (!actorAboveMap){
+        
+        // Si pas d'acteur 
+        if (!actorDessusMap){
             loadRandomGround(-(CELL_SIZE/2)+1);
         }
        

@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Sat Apr 22 17:17:45 CEST 2017
+#Sat Apr 22 17:32:19 CEST 2017
 target16.name=Background
 dependency35.to=Rail
 editor.swing.0.y=23
@@ -56,7 +56,7 @@ class.Road.superclass=Background
 class.Item.superclass=greenfoot.Actor
 class.CoinOnPlatform.superclass=Coin
 target18.width=130
-editor.fx.0.height=0
+editor.fx.0.height=744
 project.charset=UTF-8
 dependency40.to=ScoreBoard
 target12.typeParameters=
@@ -208,12 +208,12 @@ class.Rock.superclass=Platform
 class.GreenCar.image=car03.png
 target25.type=ClassTarget
 dependency33.from=Map
-editor.fx.0.y=0
+editor.fx.0.y=24
 dependency36.type=UsesDependency
-editor.fx.0.x=0
+editor.fx.0.x=57
 dependency11.to=Map
 target6.height=50
-editor.fx.0.width=0
+editor.fx.0.width=1309
 class.EndScreen.superclass=greenfoot.Actor
 target24.width=80
 target25.y=10
