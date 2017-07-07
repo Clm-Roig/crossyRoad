@@ -9,9 +9,8 @@ public class Coin extends Item {
         super();  
     }      
     
-    // Animation de la prise de Reward
+    // Animation de la prise de coin
     public void taken(){        
-        this.turn(360);
         GreenfootSound sound = new GreenfootSound("coin.wav");
         sound.play();
         getWorld().removeObject(this);

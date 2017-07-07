@@ -9,9 +9,5 @@ public class BlueCar extends Car {
     public BlueCar(String direction) {
         super(direction,4);
     }
-    
-    public void act() {
-        super.act();
-    }
 
 }

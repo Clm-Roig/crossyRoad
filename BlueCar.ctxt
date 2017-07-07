@@ -3,6 +3,4 @@ comment0.target=BlueCar
 comment0.text=\n\ @author\ Jade\ HENNEBERT\ &\ Cl\u00E9ment\ ROIG\n\ @version\ 1,0\n
 comment1.params=direction
 comment1.target=BlueCar(java.lang.String)
-comment2.params=
-comment2.target=void\ act()
-numComments=3
+numComments=2

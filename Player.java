@@ -7,8 +7,8 @@ import java.util.List;
  * @version (1,0))
  */
 public class Player extends Mover {
-    public static final int SIZE_MAP = 550;
-    public static final int CELL_SIZE = 50;
+    public static int SIZE_MAP;
+    public static int CELL_SIZE;
     
     private final int IMAGE_SIZE = 40;
     private final int WALKING_DELAY = 10;
@@ -18,16 +18,17 @@ public class Player extends Mover {
         super(CELL_SIZE);
         this.getImage().scale(IMAGE_SIZE,IMAGE_SIZE);
         setRotation(270);
+        
+        // Chargement des variables du monde        
+        SIZE_MAP = ((Map)getWorld()).SIZE_MAP;
+        CELL_SIZE = ((Map)getWorld()).CELL_SIZE;
     }
+
     
-    /**
-     * Act - do whatever the Player wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act() {     
         checkMove();    
        
-        // Si on est sur de l'eau et qu'il n'y a pas de Platform, gameOver.
+        // Si on est sur de l'eau et qu'il n'y a pas de Platform, le joueur meurt.
         // Si il y a une plateforme, on met le joueur dessus 
         Actor wat = getOneIntersectingObject(Water.class);
         if(wat != null){
@@ -40,26 +41,25 @@ public class Player extends Mover {
             }
         }
         
-        // Si on est sur un véhicule, gameOver
+        // Si on est sur un véhicule, le joueur meurt.
         Actor intersectVehicle = getOneIntersectingObject(Vehicle.class);
         if(intersectVehicle != null) {
             killPlayer();
         } 
         
-        // Si on est hors du champs le joueur meurt
+        // Si on est hors du champ, le joueur meurt.
         int y = this.getY();
         if (y > (SIZE_MAP + CELL_SIZE/2)){
             killPlayer();
         }
         
-        // Si le Player rencontre un item, le prend
+        // Si le Player rencontre un item, il le prend.
         Coin coin = (Coin)getOneIntersectingObject(Coin.class);
         if(coin != null){ 
             coin.taken();
             ((Map)getWorld()).score.increment(5);          
         }     
    
-        
         walkingDelayCounter++;
     }  
     
@@ -157,7 +157,8 @@ public class Player extends Mover {
         return false;
     }
     
-    /* Seulement pour les tests
+    // On autorise le mouvement vers le bas seulement pour les tests
+    /*
     public boolean moveDown() {
         boolean itMoved = super.moveDown();
         if(itMoved) {
@@ -171,7 +172,8 @@ public class Player extends Mover {
             }
        }
         return itMoved; 
-    }*/ 
+    }
+    */ 
   
     public void killPlayer() {        
         // Apparition d'un crane

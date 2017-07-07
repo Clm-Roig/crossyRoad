@@ -10,9 +10,6 @@ public class Rail extends Background
 {
     private String direction;
       
-    /**
-     * Constructor for objects of class Road.
-     */
     public Rail(String direction) {
         super();
         this.direction = direction;        

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Train
-comment0.text=\n\ \n\ @author\ (Jade\ HENNEBERT\ &\ Cl\u00E9ment\ ROIG)\ \n\ @version\ (1,0)\n
+comment0.text=\n\ @author\ (Jade\ HENNEBERT\ &\ Cl\u00E9ment\ ROIG)\ \n\ @version\ (1,0)\n
 comment1.params=direction
 comment1.target=Train(java.lang.String)
 comment2.params=

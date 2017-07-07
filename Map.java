@@ -94,14 +94,14 @@ public class Map extends World {
     // Les differéntes méthodes de chargement de background        
     public void loadWater(int y){
         String direction;
-        if(Greenfoot.getRandomNumber(2)==0) {
+        if(Greenfoot.getRandomNumber(2) == 0) {
             direction = "toLeft";
         }
         else {
             direction = "toRight";
         }  
                 
-        // 2 lignes d'eau consécutives ne peuvent avoir la meme vitesse
+        // 2 lignes d'eau consécutives ne peuvent avoir la meme vitesse sinon on ne pourra pas toujours traverser sur les rondins
         int waterSpeed;
         List<Water> listWater = getObjectsAt(SIZE_MAP/2,y+CELL_SIZE,Water.class);
         if(!listWater.isEmpty()) {
@@ -121,14 +121,12 @@ public class Map extends World {
             addObject(wat,i,y);           
                 
             // Log ?
-            int isLog = Greenfoot.getRandomNumber(100);
-            if(isLog < PROBA_LOG) {
+            if(Greenfoot.getRandomNumber(100) < PROBA_LOG) {
                Platform log = wat.addLog(CELL_SIZE);
                atLeast1Log = true;
                
                // Coin ? 
-               int isCoin = Greenfoot.getRandomNumber(100);
-               if(isCoin < PROBA_COIN){
+               if(Greenfoot.getRandomNumber(100) < PROBA_COIN){
                    wat.addCoinOnPlatform(log);
                 }
             }
@@ -146,20 +144,18 @@ public class Map extends World {
                addObject(pl,i,y);       
                
                // Tree or Coin ?
-               int isTree = Greenfoot.getRandomNumber(100);
-               int isCoin = Greenfoot.getRandomNumber(100);
-               if(isTree < PROBA_TREE) {
+               if(Greenfoot.getRandomNumber(100) < PROBA_TREE) {
                    pl.addTree();
                }
-               else if(isCoin < PROBA_COIN){
+               else if(Greenfoot.getRandomNumber(100) < PROBA_COIN){
                    pl.addCoin();
                }
         }
     }
     
     public void loadRoad(int y){
-        String direction;
-        if(Greenfoot.getRandomNumber(2)==0) {
+        String direction; 
+        if(Greenfoot.getRandomNumber(2) == 0) {
             direction = "toLeft";
         }
         else {
@@ -174,16 +170,14 @@ public class Map extends World {
            addObject(road,i,y);               
            
            // Car ?
-           int isCar = Greenfoot.getRandomNumber(100);
-           if(isCar < PROBA_CAR) {
+           if(Greenfoot.getRandomNumber(100) < PROBA_CAR) {
                if(colorCar == 0) road.addRedCar();
                if(colorCar == 1) road.addGreenCar();
                if(colorCar == 2) road.addBlueCar();
            }
            
            // Coin ? 
-           int isCoin = Greenfoot.getRandomNumber(100);
-           if(isCoin < PROBA_COIN){
+           if(Greenfoot.getRandomNumber(100) < PROBA_COIN){
                road.addCoin();
             }
         }
@@ -205,8 +199,7 @@ public class Map extends World {
                     addObject(rail,i,y); 
                     
                     // Coin ? 
-                    int isCoin = Greenfoot.getRandomNumber(100);
-                    if(isCoin < PROBA_COIN){
+                    if(Greenfoot.getRandomNumber(100) < PROBA_COIN){
                         rail.addCoin();
                     }
                 } 
@@ -224,8 +217,7 @@ public class Map extends World {
                     addObject(rail,i,y);    
                     
                     // Coin ? 
-                    int isCoin = Greenfoot.getRandomNumber(100);
-                    if(isCoin < PROBA_COIN){
+                    if(Greenfoot.getRandomNumber(100) < PROBA_COIN){
                         rail.addCoin();
                     }
                 } 
@@ -279,7 +271,7 @@ public class Map extends World {
         Greenfoot.start();       
     }
     
-    // Défilage Map
+    // Défilement Map
     public void defile (){
         List <Actor> listActeurs = getObjects(Actor.class);
         boolean actorDessusMap = false;
@@ -293,13 +285,13 @@ public class Map extends World {
             // Actor au-dessus de la map ?
             actorDessusMap = actorDessusMap || (y < CELL_SIZE/2);
            
-            // Actor sous la map ?
+            // Actor sous la map ? On le supprime
             if (y > SIZE_MAP + CELL_SIZE/2){
                 this.removeObject(act);
             }
         }
         
-        // Si pas d'acteur 
+        // Si pas d'acteur au dessus, on charge une bande de terrain
         if (!actorDessusMap){
             loadRandomGround(-(CELL_SIZE/2)+1);
         }
